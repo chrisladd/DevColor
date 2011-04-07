@@ -6,7 +6,9 @@ Free app for Mac OSX. Download v0.1 [here](https://github.com/downloads/chrislad
 
 ###Simple Color Strings by Chris Ladd
 
-DevColor is a simple, graphical tool that generates color-representing strings in a variety of frameworks. The goal is to make choosing colors as painless as possible. The DevColor interface is a simple panel:
+DevColor is a simple, graphical tool created with a single goal: to make my life as an iOS, Mac and web developer better.  For the past several months I've been using DevColor every day as a lightweight tool to generate color-representing strings in a variety of formats. Now you can too.
+
+The DevColor interface is a simple panel:
 
 ![Dev color in green](https://github.com/chrisladd/DevColor/raw/master/images/greenUI.png)
 
@@ -39,7 +41,9 @@ Choose a color, then copy it to your clipboard:
 
 While the source code is fully available to download and compile yourself, a compiled binary is available [here](https://github.com/downloads/chrisladd/DevColor/DevColor.zip). 
 
-If you like DevColor, check out Chris Ladd's other projects on his website at [http://wwww.ladditude.com](http://wwww.ladditude.com). Or you can check out his [iOS apps on the iTunes app store](http://itunes.com/apps/walksoft). Or you can follow him on Twitter at @chrisladd. Or you can buy him a beer at WWDC -- he'll be there.
+I've benefitted a great deal from the generosity of others as I continue to grow as a developer. DevColor is a small way of giving back.
+
+If you like DevColor, check out some of my other projects on my website at [http://www.ladditude.com](http://www.ladditude.com). Or you can check out my [iOS apps on the iTunes app store](http://itunes.com/apps/walksoft). Or you can follow me on Twitter at @chrisladd. Or you can buy me a beer at WWDC -- he'll be there.
 
 Hope you like it, and please, let me know what you think.
 -Chris
