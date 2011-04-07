@@ -7,29 +7,50 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
+#import "DCClickableImageView.h"
+
+@class DCColor;
+
 typedef enum codeTypes {
 	uicolor, nscolor, hex, rgb, rgba
 	
 } codeType;
 
-@interface DevColor : NSObject {
+@interface DevColor : NSObject<DCClickableImageViewDelegate> {
+    
+    NSArray *colorHistory;
+    int historyIndex;
+	codeType colorMode;
+	
 
-	IBOutlet NSColorWell *colorWell;
-
+    IBOutlet NSColorWell *colorWell;
+    
 	IBOutlet NSComboBox *comboBox;
 	IBOutlet NSTextField *copyableTextField;
     IBOutlet NSButton *copyButton;
+
+    IBOutlet DCClickableImageView *lock0, *lock1, *lock2, *lock3, *lock4, *lock5;
+    IBOutlet NSColorWell *historyWell0, *historyWell1, *historyWell2, *historyWell3, *historyWell4, *historyWell5; 
     
-	codeType colorMode;
-	
+    IBOutlet NSView *mainView;
 	
 }
 
-@property (readwrite, assign) codeType colorMode;
-
+@property int historyIndex;
+@property codeType colorMode;
+@property (retain) NSArray *colorHistory;
 
 -(IBAction)colorWellUpdated:(id)sender;
 -(IBAction)swapColorMode:(id)sender;
 -(IBAction)copyCodeToClipboard:(id)sender;
 -(void)copyButtonNormal:(NSTimer *)aTimer;
+-(void)saveColorHistory;
+-(void)refreshHistoryWells;
+-(void)setupLocks;
+-(void)updateLocks;
+-(void)setupColorHistory;
+
+-(NSColor *)randomColor;
+
 @end

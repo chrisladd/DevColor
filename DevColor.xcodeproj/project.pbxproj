@@ -22,6 +22,12 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		8E0C9124134D475800B6B3F9 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8E0C9123134D475800B6B3F9 /* Icon.icns */; };
+		8EA184A7134DEE9700B659E3 /* padlockMockup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA184A6134DEE9700B659E3 /* padlockMockup.png */; };
+		8EA184A9134DF01500B659E3 /* simpleLock.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA184A8134DF01500B659E3 /* simpleLock.png */; };
+		8EA184AC134DF28F00B659E3 /* lockOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA184AA134DF28F00B659E3 /* lockOn.png */; };
+		8EA184AF134DF39A00B659E3 /* lockOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EA184AE134DF39A00B659E3 /* lockOff.png */; };
+		8EA184B2134DF75600B659E3 /* DCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA184B1134DF75600B659E3 /* DCColor.m */; };
+		8EA184B5134E057500B659E3 /* DCClickableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA184B4134E057500B659E3 /* DCClickableImageView.m */; };
 		8EA3FFDB12EF1A4000D392B0 /* DevColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA3FFDA12EF1A4000D392B0 /* DevColor.m */; };
 		8EEAC3FF134D3FE20080A5BE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC3FE134D3FE20080A5BE /* Credits.rtf */; };
 /* End PBXBuildFile section */
@@ -73,6 +79,14 @@
 		8D1107310486CEB800E47090 /* DevColor-Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist.xml; fileEncoding = 4; path = "DevColor-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* DevColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E0C9123134D475800B6B3F9 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
+		8EA184A6134DEE9700B659E3 /* padlockMockup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = padlockMockup.png; sourceTree = "<group>"; };
+		8EA184A8134DF01500B659E3 /* simpleLock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simpleLock.png; sourceTree = "<group>"; };
+		8EA184AA134DF28F00B659E3 /* lockOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lockOn.png; sourceTree = "<group>"; };
+		8EA184AE134DF39A00B659E3 /* lockOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lockOff.png; sourceTree = "<group>"; };
+		8EA184B0134DF75600B659E3 /* DCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCColor.h; sourceTree = "<group>"; };
+		8EA184B1134DF75600B659E3 /* DCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCColor.m; sourceTree = "<group>"; };
+		8EA184B3134E057500B659E3 /* DCClickableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCClickableImageView.h; sourceTree = "<group>"; };
+		8EA184B4134E057500B659E3 /* DCClickableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCClickableImageView.m; sourceTree = "<group>"; };
 		8EA3005012EF2C6500D392B0 /* NSColor+hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+hex.h"; sourceTree = "<group>"; };
 		8EA3FFD912EF1A4000D392B0 /* DevColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevColor.h; sourceTree = "<group>"; };
 		8EA3FFDA12EF1A4000D392B0 /* DevColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevColor.m; sourceTree = "<group>"; };
@@ -111,6 +125,10 @@
 				797A783E0DDCFB3E0050D0C2 /* Importer */,
 				8EA3FFD912EF1A4000D392B0 /* DevColor.h */,
 				8EA3FFDA12EF1A4000D392B0 /* DevColor.m */,
+				8EA184B0134DF75600B659E3 /* DCColor.h */,
+				8EA184B1134DF75600B659E3 /* DCColor.m */,
+				8EA184B3134E057500B659E3 /* DCClickableImageView.h */,
+				8EA184B4134E057500B659E3 /* DCClickableImageView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -170,10 +188,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8EA184A8134DF01500B659E3 /* simpleLock.png */,
+				8EA184A6134DEE9700B659E3 /* padlockMockup.png */,
 				8E0C9123134D475800B6B3F9 /* Icon.icns */,
 				8EEAC3FE134D3FE20080A5BE /* Credits.rtf */,
 				8D1107310486CEB800E47090 /* DevColor-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				8EA184AE134DF39A00B659E3 /* lockOff.png */,
+				8EA184AA134DF28F00B659E3 /* lockOn.png */,
 				2F7446970DB6B7EA00F9684A /* MainMenu.xib */,
 				797A78410DDCFB3E0050D0C2 /* Importer-Info.plist */,
 			);
@@ -289,6 +311,10 @@
 				2F7446990DB6B7EA00F9684A /* MainMenu.xib in Resources */,
 				8EEAC3FF134D3FE20080A5BE /* Credits.rtf in Resources */,
 				8E0C9124134D475800B6B3F9 /* Icon.icns in Resources */,
+				8EA184A7134DEE9700B659E3 /* padlockMockup.png in Resources */,
+				8EA184A9134DF01500B659E3 /* simpleLock.png in Resources */,
+				8EA184AC134DF28F00B659E3 /* lockOn.png in Resources */,
+				8EA184AF134DF39A00B659E3 /* lockOff.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +339,8 @@
 				77C8280E06725ACE000B614F /* DevColor_AppDelegate.m in Sources */,
 				770B37ED0679A11B001EADE2 /* DevColor_DataModel.xcdatamodel in Sources */,
 				8EA3FFDB12EF1A4000D392B0 /* DevColor.m in Sources */,
+				8EA184B2134DF75600B659E3 /* DCColor.m in Sources */,
+				8EA184B5134E057500B659E3 /* DCClickableImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

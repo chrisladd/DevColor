@@ -8,13 +8,48 @@
 
 #import "DevColor.h"
 #import "NSColor+hex.h"
+#import "DCColor.h"
+
 @implementation DevColor
-@synthesize colorMode;
+@synthesize colorMode, colorHistory, historyIndex;
+
+#define HISTORY_WELL_BASE_TAG 900
+#define LOCK_BASE_TAG 800
+#define HISTORY_LENGTH 6
+
 
 -(void)awakeFromNib {
 	
 	self.colorMode = uicolor;
-	
+	self.historyIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"dColorIndex"];
+
+    BOOL needsColorHistory = YES;
+    
+    NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"dColorData"];
+
+
+    if ([colorData isKindOfClass:[NSData class]]) {
+
+        NSData *filthyHistory = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+    
+        if ([filthyHistory isKindOfClass:[NSArray class]]) {
+            self.colorHistory = (NSArray *)filthyHistory;
+            needsColorHistory = NO;
+        
+        }
+    }
+    
+    
+    if (needsColorHistory) {
+        [self setupColorHistory];
+        
+    }
+    
+    
+    [self setupLocks];
+    [self updateLocks];
+    
+    
 	CGFloat lastRed = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRed"];
 	CGFloat lastGreen = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastGreen"];
 	CGFloat lastBlue = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastBlue"];
@@ -38,13 +73,69 @@
 	[self swapColorMode:nil];
 	[self colorWellUpdated:nil];
 
+    [self refreshHistoryWells];
+    
 }
+
+
+-(void)setupColorHistory {
+    
+    NSMutableArray *preColors = [NSMutableArray array];
+    
+    for (int i = 0; i < HISTORY_LENGTH; i++) {
+        
+        NSColor *rColor = [self randomColor];
+        DCColor *dColor = [DCColor colorWithNSColor:rColor];
+        
+        [preColors addObject:dColor];
+        
+    }
+  
+    
+    self.colorHistory = [NSArray arrayWithArray:preColors];
+    [self saveColorHistory];
+    
+}
+
+
+-(NSColor *)randomColor {
+    float redFloat;
+    float greenFloat;
+    float blueFloat;
+
+    redFloat = (arc4random() % 100) / 100.0;
+    greenFloat = (arc4random() % 100) / 100.0;        
+    blueFloat = (arc4random() % 100) / 100.0;
+
+    NSColor *aColor = [NSColor colorWithCalibratedRed:redFloat green:greenFloat blue:blueFloat alpha:1.0];
+    
+    return aColor;
+    
+}
+
+
+-(void)saveColorHistory {
+
+    if (self.colorHistory) {
+        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.colorHistory];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"dColorData"];
+
+    }
+    
+}
+
+
 
 
 
 -(IBAction)colorWellUpdated:(id)sender {
 	
 	NSColor *color = [colorWell color];
+    
+
+    
+    
 	[[NSUserDefaults standardUserDefaults] setFloat:color.redComponent forKey:@"lastRed"];
 	[[NSUserDefaults standardUserDefaults] setFloat:color.greenComponent forKey:@"lastGreen"];
 	[[NSUserDefaults standardUserDefaults] setFloat:color.blueComponent forKey:@"lastBlue"];
@@ -128,7 +219,132 @@
         [[NSColorPanel sharedColorPanel] close];
         
     }
+    
+    
 
+    
+    // and save our color, since our user obviously likes it.
+    // swap the color in our colorHistory.
+    NSColor *color = colorWell.color;
+    DCColor *onDeckDCColor;
+    
+    int i = 0;
+    
+    while (i < HISTORY_LENGTH) {
+        self.historyIndex = (self.historyIndex + 1) % HISTORY_LENGTH;
+        onDeckDCColor = [self.colorHistory objectAtIndex:self.historyIndex];
+        
+        if (!onDeckDCColor.isLocked) {
+            
+            // reset the color
+            onDeckDCColor.color = color;
+            
+            
+            // and the color well. You should be doing this with KVO, but oh well...
+            int wellGrabberInt = HISTORY_WELL_BASE_TAG + self.historyIndex;
+            NSColorWell *aWell = [mainView viewWithTag:wellGrabberInt];
+            aWell.color = color;
+            
+            
+            break;
+        }
+        
+        
+        i++;
+    }
+    
+    
+    [self saveColorHistory];
+    
+}
+
+
+
+
+-(BOOL)clickFromDCClickableImageView:(NSImageView *)imageView {
+    
+    int colorIndex = imageView.tag - LOCK_BASE_TAG;
+    
+    DCColor *dColor = [self.colorHistory objectAtIndex:colorIndex];
+    BOOL shouldLock;
+    
+    if (dColor.isLocked) {
+        dColor.isLocked = NO;
+        shouldLock = NO;
+    } else {
+        dColor.isLocked = YES;
+        shouldLock = YES;
+    }
+
+    [self saveColorHistory];
+    
+    return shouldLock;
+}
+
+
+-(void)setupLocks {
+    
+    
+    lock0.delegate = self;
+    lock1.delegate = self;
+    lock2.delegate = self;
+    lock3.delegate = self;
+    lock4.delegate = self;
+    lock5.delegate = self;
+
+    
+    
+}
+
+
+
+
+-(void)updateLocks {
+    
+    int i = 0;
+    for (DCColor *color in self.colorHistory) {
+        
+        if ([color isKindOfClass:[DCColor class]]) {
+            
+            int lockGrabberInt = LOCK_BASE_TAG + i;
+            
+            DCClickableImageView *lockImageView = [mainView viewWithTag:lockGrabberInt];
+            
+            if (color.isLocked) {
+                [lockImageView shouldLock:YES];
+                
+            } else {
+                [lockImageView shouldLock:NO];
+                
+            }
+        
+        }
+        
+        
+        i++;
+    }
+
+     
+}
+
+-(void)refreshHistoryWells {
+    int i = 0;
+    for (DCColor *dColor in self.colorHistory) {
+    
+        int wellGrabberInt = HISTORY_WELL_BASE_TAG + i;
+        
+        NSColorWell *aWell = [mainView viewWithTag:wellGrabberInt];
+        
+        if ([aWell isKindOfClass:[NSColorWell class]]) {
+            
+            [aWell setColor:dColor.color];
+
+        }
+
+
+        
+        i++;
+    }
     
 }
 
@@ -139,6 +355,17 @@
 
 
 -(void)dealloc {
+
+    lock0.delegate = nil;
+    lock1.delegate = nil;
+    lock2.delegate = nil;
+    lock3.delegate = nil;
+    lock4.delegate = nil;
+    lock5.delegate = nil;
+
+    self.colorHistory = nil;
+    
+    
     [super dealloc];
 }
 
