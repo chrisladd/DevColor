@@ -51,7 +51,7 @@
 	int greenInt = greenFloat / 100;
 	int blueInt = blueFloat / 100;
     
-    NSString *rgbString = [NSString stringWithFormat:@"rgba(%d, %d, %d)", redInt, greenInt, blueInt];
+    NSString *rgbString = [NSString stringWithFormat:@"rgb(%d, %d, %d)", redInt, greenInt, blueInt];
     
     return rgbString;
     

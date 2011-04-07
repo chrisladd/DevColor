@@ -5,21 +5,30 @@
 
 ###by Chris Ladd
 
-DevColor is a simple, graphical tool that generates strings representing colors in a number of frameworks. The goal is to make choosing colors as painless as possible. The DevColor interface is a simple panel:
+DevColor is a simple, graphical tool that generates color-representing strings in a variety of frameworks. The goal is to make choosing colors as painless as possible. The DevColor interface is a simple panel:
 
 ![Dev color in green](https://github.com/chrisladd/DevColor/raw/master/images/greenUI.png)
-
-Currently supported color representations are:
-
-- UIColor
-- NSColor
-- Hex (web)
-- rgba (web)
-- rgb (web)
 
 Just click the large color well to bring up the color panel:
 
 ![Just click the large color well to bring up the color panel](https://github.com/chrisladd/DevColor/raw/master/images/greenUIWithPicker.png)
+
+Currently supported color representations are:
+
+- UIColor
+>![UIColor](https://github.com/chrisladd/DevColor/raw/master/images/UIColorSnippet.png)
+- NSColor
+>![NSColor](https://github.com/chrisladd/DevColor/raw/master/images/NSColorSnippet.png)
+
+- Hex (web)
+>![Hex](https://github.com/chrisladd/DevColor/raw/master/images/HexColorSnippet.png)
+
+- rgba (web)
+>![RGBA](https://github.com/chrisladd/DevColor/raw/master/images/RGBASnippet.png)
+
+- rgb (web)
+>![RGB](https://github.com/chrisladd/DevColor/raw/master/images/RGBSnippet.png)
+
 
 
 Choose a color, then copy it to your clipboard:
