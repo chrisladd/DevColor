@@ -1,7 +1,11 @@
 ##DevColor
+###by Chris Ladd
 
-![DevColor](https://github.com/chrisladd/DevColor/raw/master/images/devColor128.png) DevColor is a simple, graphical tool that generates strings representing colors in a number of frameworks. Currently supported color representations are:
+DevColor is a simple, graphical tool that generates strings representing colors in a number of frameworks. Currently supported color representations are:
 
+<div style="float:left; margin-right:20px;">
+<img src="https://github.com/chrisladd/DevColor/raw/master/images/devColor128.png" />
+</div>
 - UIColor
 - NSColor
 - Hex (web)
