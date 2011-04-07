@@ -2,8 +2,9 @@
 <img src="https://github.com/chrisladd/DevColor/raw/master/images/devColor128.png" />
 </div>
 <h1>DevColor</h1>
+Free app for Mac OSX. Download v0.1 [here](https://github.com/downloads/chrisladd/DevColor/DevColor.zip)
 
-###by Chris Ladd
+###Simple Color Strings by Chris Ladd
 
 DevColor is a simple, graphical tool that generates color-representing strings in a variety of frameworks. The goal is to make choosing colors as painless as possible. The DevColor interface is a simple panel:
 
@@ -37,3 +38,9 @@ Choose a color, then copy it to your clipboard:
 
 
 While the source code is fully available to download and compile yourself, a compiled binary is available [here](https://github.com/downloads/chrisladd/DevColor/DevColor.zip). 
+
+If you like DevColor, check out Chris Ladd's other projects on his website at [http://wwww.ladditude.com](http://wwww.ladditude.com). Or you can check out his [iOS apps on the iTunes app store](http://itunes.com/apps/walksoft). Or you can follow him on Twitter at @chrisladd. Or you can buy him a beer at WWDC -- he'll be there.
+
+Hope you like it, and please, let me know what you think.
+-Chris
+
