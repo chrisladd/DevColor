@@ -24,7 +24,7 @@ Currently supported color representations are:
 >![Hex](https://github.com/chrisladd/DevColor/raw/master/images/HexColorSnippet.png)
 
 - rgba (web)
->![RGBA](https://github.com/chrisladd/DevColor/raw/master/images/RGBASnippet.png)
+>![RGBA](https://github.com/chrisladd/DevColor/raw/master/images/RGBAColorSnippet.png)
 
 - rgb (web)
 >![RGB](https://github.com/chrisladd/DevColor/raw/master/images/RGBSnippet.png)
