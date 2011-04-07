@@ -5,6 +5,11 @@
 //  Created by Christopher Ladd on 1/25/11.
 //  Copyright 2011 WalkSoft. All rights reserved.
 //
+//  Adds support for a variety of return types to NSColor, as well as calculating new ones. 
+//  I really should rename this category to reflect recent improvements, but I've been too lazy.
+//
+//
+
 
 #import <Cocoa/Cocoa.h>
 
@@ -14,6 +19,11 @@
 -(NSString *)rgbValue;
 -(NSString *)rgbaValue;
 
+-(NSArray *)shadeArray;
+
+-(NSColor *)complement;
+
+-(NSArray *)twinColorCousinsSeparatedByDegrees:(float)degrees initialOffset:(float)offsetDegrees;
 @end
 
 
@@ -86,8 +96,83 @@ return hexString;
 }
 
 
+/*
+ Thanks to: http://stackoverflow.com/questions/2144979/is-there-a-conventional-method-for-inverting-nscolor-values/2145080#2145080
+
+ This site: http://www.december.com/html/spec/colorshadesuse.html 
+ was also very helpful in helping me to understand how different complementary schemes fit together.
+ 
+ */
+
+-(NSColor *)complement {
+    return [NSColor colorWithCalibratedRed:(1.0 - [self redComponent])
+                                     green:(1.0 - [self greenComponent])
+                                      blue:(1.0 - [self blueComponent])
+                                     alpha:[self alphaComponent]];
+    
+}
+
+/*
+ Returns an array of 10 shades of the same hue and saturation.
+ */
+-(NSArray *)shadeArray {
+    
+    NSMutableArray *a = [NSMutableArray array];
+    float b = 0.0;
+    for (int i = 0; i < 10; i++) {
+        
+        b += 0.1;
+        
+        NSColor *aColor = [NSColor colorWithCalibratedHue:self.hueComponent saturation:self.saturationComponent brightness:b alpha:1.0];
+
+        
+
+        [a addObject:aColor];
+        
+        
+    }
+    
+    return [NSArray arrayWithArray:a];
+    
+}
+
+/*
+    Returns an array of two color objects. Twins!
+ */
+
+-(NSArray *)twinColorCousinsSeparatedByDegrees:(float)degrees initialOffset:(float)offsetDegrees {
+    
+    float decimalOffset = offsetDegrees / 360.0;
+    
+    float startingDegrees = self.hueComponent + decimalOffset;
+    
+    while (startingDegrees > 1.0) {
+        startingDegrees -= 1.0;
+    }
+    
+    float twinIncrement = degrees / 360.0;
+    
+    float firstHue = startingDegrees + twinIncrement;
+    float secondHue = startingDegrees - twinIncrement;
+    
+    while (firstHue > 1.0) {
+        firstHue -= 1.0;
+    }
+
+    while (secondHue > 1.0) {
+        secondHue -= 1.0;
+    }
+    
+    
+    NSColor *firstColor = [NSColor colorWithCalibratedHue:firstHue saturation:self.saturationComponent brightness:self.brightnessComponent alpha:1.0];
+
+    NSColor *secondColor = [NSColor colorWithCalibratedHue:secondHue saturation:self.saturationComponent brightness:self.brightnessComponent alpha:1.0];
+    
+    return [NSArray arrayWithObjects:firstColor, secondColor, nil];
+
+
+}
+
+
+
 @end
-
-
-
-

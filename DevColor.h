@@ -20,6 +20,8 @@ typedef enum codeTypes {
 @interface DevColor : NSObject<DCClickableImageViewDelegate> {
     
     NSArray *colorHistory;
+    NSColor *color0, *color1, *color2, *color3, *color4;
+    
     int historyIndex;
 	codeType colorMode;
 	
@@ -40,14 +42,28 @@ typedef enum codeTypes {
     
     IBOutlet NSView *mainView;
 	
+    
+    IBOutlet NSSlider *rSlider;
+    IBOutlet NSSlider *gSlider;
+    IBOutlet NSSlider *bSlider;
+
+    IBOutlet NSSlider *hSlider;
+    IBOutlet NSSlider *sSlider;
+    IBOutlet NSSlider *tSlider; // t is for brighTness
+
+    
+    
 }
 
 @property int historyIndex;
 @property codeType colorMode;
 @property (retain) NSArray *colorHistory, *fxArray;
 @property BOOL enjoysQuiet, swatchNeeded;
--(IBAction)toggleSound:(id)sender;
 
+@property (retain) NSColor *color0, *color1, *color2, *color3, *color4;
+
+-(void)saveColorHistory;
+-(IBAction)toggleSound:(id)sender;
 -(IBAction)colorWellUpdated:(id)sender;
 -(IBAction)swapColorMode:(id)sender;
 -(IBAction)copyCodeToClipboard:(id)sender;
@@ -58,6 +74,9 @@ typedef enum codeTypes {
 -(void)setupLocks;
 -(void)updateLocks;
 -(void)setupColorHistory;
+-(BOOL)sliderIsRGBSlider:(NSSlider *)theSlider;
+
+-(void)updateShadedColorWellsForColor:(NSColor *)aColor withBaseTag:(int)baseTag;
 
 -(NSColor *)randomColor;
 

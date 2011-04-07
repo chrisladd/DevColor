@@ -13,6 +13,13 @@
 @implementation DevColor
 @synthesize colorMode, colorHistory, historyIndex, enjoysQuiet, fxArray, swatchNeeded;
 
+#define MAIN_SHADES_BASE_TAG 400
+#define COMPLENENT_BASE_TAG 500
+#define SPLIT_COMPLEMENT_BASE1 600
+#define SPLIT_COMPLEMENT_BASE2 700
+
+
+
 #define HISTORY_WELL_BASE_TAG 900
 #define LOCK_BASE_TAG 800
 #define HISTORY_LENGTH 5
@@ -20,6 +27,7 @@
 
 -(void)awakeFromNib {
 	
+    
     
 	self.colorMode = uicolor;
 	self.historyIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"dColorIndex"];
@@ -34,7 +42,22 @@
         NSData *filthyHistory = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     
         if ([filthyHistory isKindOfClass:[NSArray class]]) {
-            self.colorHistory = (NSArray *)filthyHistory;
+            NSArray *historyArray = (NSArray *)filthyHistory;
+            
+            DCColor *c0 = [historyArray objectAtIndex:0];
+            DCColor *c1 = [historyArray objectAtIndex:1];
+            DCColor *c2 = [historyArray objectAtIndex:2];
+            DCColor *c3 = [historyArray objectAtIndex:3];
+            DCColor *c4 = [historyArray objectAtIndex:4];
+
+            self.color0 = c0.color;
+            self.color0 = c1.color;
+            self.color0 = c2.color;
+            self.color0 = c3.color;
+            self.color0 = c4.color;
+
+            self.colorHistory = historyArray;
+            
             needsColorHistory = NO;
         
         }
@@ -56,6 +79,7 @@
         [self setupColorHistory];
         
     }
+    
     
     
     [self setupLocks];
@@ -140,7 +164,7 @@
 
 
 -(void)saveColorHistory {
-
+    
     if (self.colorHistory) {
         
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.colorHistory];
@@ -149,6 +173,102 @@
     }
     
 }
+
+
+
+-(NSColor *)color0 {
+    return color0;
+    
+}
+
+-(NSColor *)color1 {
+    return color1;
+    
+}
+-(NSColor *)color2 {
+    return color2;
+    
+}
+
+-(NSColor *)color3 {
+    return color3;
+    
+}
+-(NSColor *)color4 {
+    return color4;
+    
+}
+
+
+-(void)setColor0:(NSColor *)aColor {
+    color0 = aColor;
+    
+    DCColor *dColor = [self.colorHistory objectAtIndex:0];
+    
+    if (aColor) {
+        dColor.color = color0;
+    }
+    
+    [self saveColorHistory];
+    self.swatchNeeded = NO;
+}
+
+
+-(void)setColor1:(NSColor *)aColor {
+    color1 = aColor;
+    
+    DCColor *dColor = [self.colorHistory objectAtIndex:1];
+    
+    if (aColor) {
+        dColor.color = color1;
+    }
+    
+    [self saveColorHistory];
+       self.swatchNeeded = NO;
+}
+
+
+-(void)setColor2:(NSColor *)aColor {
+    color2 = aColor;
+    
+    DCColor *dColor = [self.colorHistory objectAtIndex:2];
+    
+    if (aColor) {
+        dColor.color = color2;
+    }
+    
+    [self saveColorHistory];
+    self.swatchNeeded = NO;    
+}
+
+
+-(void)setColor3:(NSColor *)aColor {
+    color3 = aColor;
+    
+    DCColor *dColor = [self.colorHistory objectAtIndex:3];
+    
+    if (aColor) {
+        dColor.color = color3;
+    }
+    
+    [self saveColorHistory];
+    self.swatchNeeded = NO;    
+}
+
+
+-(void)setColor4:(NSColor *)aColor {
+    color4 = aColor;
+    
+    DCColor *dColor = [self.colorHistory objectAtIndex:4];
+    
+    if (aColor) {
+        dColor.color = color4;
+    }
+    
+    [self saveColorHistory];
+    self.swatchNeeded = NO;    
+}
+
 
 
 -(IBAction)toggleSound:(id)sender {
@@ -174,6 +294,26 @@
 -(IBAction)colorWellUpdated:(id)sender {
 	
 	NSColor *color = [colorWell color];
+    
+    // update the sliders
+    rSlider.floatValue = color.redComponent;
+    gSlider.floatValue = color.greenComponent;    
+    bSlider.floatValue = color.blueComponent;    
+    
+    
+    hSlider.floatValue = color.hueComponent;
+    sSlider.floatValue = color.saturationComponent;    
+    tSlider.floatValue = color.brightnessComponent;    
+
+    NSColor *complement = [color complement];
+    [self updateShadedColorWellsForColor:complement withBaseTag:COMPLENENT_BASE_TAG];
+    [self updateShadedColorWellsForColor:color withBaseTag:MAIN_SHADES_BASE_TAG];
+    
+    NSArray *splitComplements = [complement twinColorCousinsSeparatedByDegrees:20.0 initialOffset:0.0];
+    
+    [self updateShadedColorWellsForColor:[splitComplements objectAtIndex:0] withBaseTag:SPLIT_COMPLEMENT_BASE1];
+    [self updateShadedColorWellsForColor:[splitComplements objectAtIndex:1] withBaseTag:SPLIT_COMPLEMENT_BASE2];
+
     
 	[[NSUserDefaults standardUserDefaults] setFloat:color.redComponent forKey:@"lastRed"];
 	[[NSUserDefaults standardUserDefaults] setFloat:color.greenComponent forKey:@"lastGreen"];
@@ -316,6 +456,22 @@
 
 
 
+-(void)updateShadedColorWellsForColor:(NSColor *)aColor withBaseTag:(int)baseTag {
+
+    NSArray *colorArray = [aColor shadeArray];
+    
+    for (int i = 0; i < colorArray.count; i++) {
+        int aTag = baseTag + i;
+        
+        NSColorWell *aColorWell = [mainView viewWithTag:aTag];
+        aColorWell.color = [colorArray objectAtIndex:i];
+        
+    }
+    
+    
+}
+
+
 
 -(BOOL)clickFromDCClickableImageView:(NSImageView *)imageView {
     
@@ -406,6 +562,7 @@
 
 -(void)copyButtonNormal:(NSTimer *)aTimer {
     [copyButton highlight:NO];
+
 }
 
 
@@ -422,6 +579,45 @@
     
     [super dealloc];
 }
+
+
+-(BOOL)sliderIsRGBSlider:(id)theSlider {
+    
+    if (theSlider == rSlider) {
+        return YES;
+    } else if (theSlider == gSlider) {
+        return YES;
+        
+    } else if (theSlider == bSlider) {
+        return YES;
+        
+    } else {
+        return NO;
+    }
+    
+    
+}
+
+
+-(IBAction)updateColorFromSlider:(id)sender {
+    
+    if ([self sliderIsRGBSlider:sender]) {
+        
+        NSColor *aColor = [NSColor colorWithCalibratedRed:rSlider.floatValue green:gSlider.floatValue blue:bSlider.floatValue alpha:1.0];
+        
+        colorWell.color = aColor;
+        [self colorWellUpdated:nil];
+        
+        
+    } else {
+            NSColor *aColor = [NSColor colorWithCalibratedHue:hSlider.floatValue saturation:sSlider.floatValue brightness:tSlider.floatValue alpha:1.0];
+            
+            colorWell.color = aColor;
+            [self colorWellUpdated:nil];
+            
+    }
+}
+
 
 
 @end
