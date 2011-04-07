@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = 8EA3FFA812EF156300D392B0 /* DevColor */;
+		activeTarget = 8D1107260486CEB800E47090 /* DevColor */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* DevColor */,
+		);
+		codeSenseManager = 8EA3FFC212EF156B00D392B0 /* Code sense */;
+		executables = (
+			8EA3FFA812EF156300D392B0 /* DevColor */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					690,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					802,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					762,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 317667389;
+			PBXWorkspaceStateSaveDate = 317667389;
+		};
+		perUserProjectItems = {
+			8E5AD56E12EF3AE10073FF17 /* PBXBookmark */ = 8E5AD56E12EF3AE10073FF17 /* PBXBookmark */;
+			8E5AD56F12EF3AE10073FF17 /* PBXTextBookmark */ = 8E5AD56F12EF3AE10073FF17 /* PBXTextBookmark */;
+			8E5AD57012EF3AE10073FF17 /* PBXTextBookmark */ = 8E5AD57012EF3AE10073FF17 /* PBXTextBookmark */;
+			8E5AD57F12EF3B090073FF17 /* PBXTextBookmark */ = 8E5AD57F12EF3B090073FF17 /* PBXTextBookmark */;
+			8EA3006F12EF2F1000D392B0 /* PBXTextBookmark */ = 8EA3006F12EF2F1000D392B0 /* PBXTextBookmark */;
+			8EA3007012EF2F1000D392B0 /* PBXTextBookmark */ = 8EA3007012EF2F1000D392B0 /* PBXTextBookmark */;
+			8EA300A512EF331400D392B0 /* PBXTextBookmark */ = 8EA300A512EF331400D392B0 /* PBXTextBookmark */;
+			8EA300B212EF33A500D392B0 /* PBXTextBookmark */ = 8EA300B212EF33A500D392B0 /* PBXTextBookmark */;
+			8EA300C212EF376200D392B0 /* PBXTextBookmark */ = 8EA300C212EF376200D392B0 /* PBXTextBookmark */;
+			8EA300C312EF376200D392B0 /* PlistBookmark */ = 8EA300C312EF376200D392B0 /* PlistBookmark */;
+		};
+		sourceControlManager = 8EA3FFC112EF156B00D392B0 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	77C8280B06725ACE000B614F /* DevColor_AppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {980, 719}}";
+			sepNavSelRange = "{290, 0}";
+			sepNavVisRange = "{0, 790}";
+		};
+	};
+	77C8280C06725ACE000B614F /* DevColor_AppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {980, 3601}}";
+			sepNavSelRange = "{7119, 0}";
+			sepNavVisRange = "{6593, 1690}";
+		};
+	};
+	797A78380DDCFADE0050D0C2 /* DevColor Spotlight Importer */ = {
+		activeExec = 0;
+	};
+	8D1107260486CEB800E47090 /* DevColor */ = {
+		activeExec = 0;
+		executables = (
+			8EA3FFA812EF156300D392B0 /* DevColor */,
+		);
+	};
+	8E5AD56E12EF3AE10073FF17 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8EA300BA12EF373D00D392B0 /* devColorIcon.icns */;
+	};
+	8E5AD56F12EF3AE10073FF17 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 77C8280B06725ACE000B614F /* DevColor_AppDelegate.h */;
+		name = "DevColor_AppDelegate.h: 15";
+		rLen = 0;
+		rLoc = 290;
+		rType = 0;
+		vrLen = 790;
+		vrLoc = 0;
+	};
+	8E5AD57012EF3AE10073FF17 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 77C8280C06725ACE000B614F /* DevColor_AppDelegate.m */;
+		name = "DevColor_AppDelegate.m: 177";
+		rLen = 0;
+		rLoc = 7114;
+		rType = 0;
+		vrLen = 2195;
+		vrLoc = 6593;
+	};
+	8E5AD57F12EF3B090073FF17 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 77C8280C06725ACE000B614F /* DevColor_AppDelegate.m */;
+		name = "DevColor_AppDelegate.m: 191";
+		rLen = 0;
+		rLoc = 7119;
+		rType = 0;
+		vrLen = 1690;
+		vrLoc = 6593;
+	};
+	8EA3005012EF2C6500D392B0 /* NSColor+hex.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {857, 780}}";
+			sepNavSelRange = "{264, 0}";
+			sepNavVisRange = "{0, 702}";
+			sepNavWindowFrame = "{{415, 55}, {1043, 948}}";
+		};
+	};
+	8EA3006F12EF2F1000D392B0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8EA3FFD412EF19D900D392B0 /* CattailArtNSColor.h */;
+		name = "CattailArtNSColor.h: 35";
+		rLen = 0;
+		rLoc = 922;
+		rType = 0;
+		vrLen = 2535;
+		vrLoc = 561;
+	};
+	8EA3007012EF2F1000D392B0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8EA3FFD512EF19D900D392B0 /* CattailArtNSColor.m */;
+		name = "CattailArtNSColor.m: 544";
+		rLen = 0;
+		rLoc = 16558;
+		rType = 0;
+		vrLen = 1529;
+		vrLoc = 15029;
+	};
+	8EA300A512EF331400D392B0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8EA3FFD912EF1A4000D392B0 /* DevColor.h */;
+		name = "DevColor.h: 28";
+		rLen = 0;
+		rLoc = 467;
+		rType = 0;
+		vrLen = 651;
+		vrLoc = 0;
+	};
+	8EA300B212EF33A500D392B0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8EA3FFDA12EF1A4000D392B0 /* DevColor.m */;
+		name = "DevColor.m: 42";
+		rLen = 0;
+		rLoc = 1054;
+		rType = 0;
+		vrLen = 1453;
+		vrLoc = 989;
+	};
+	8EA300C212EF376200D392B0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8EA3005012EF2C6500D392B0 /* NSColor+hex.h */;
+		name = "NSColor+hex.h: 30";
+		rLen = 0;
+		rLoc = 529;
+		rType = 0;
+		vrLen = 1011;
+		vrLoc = 34;
+	};
+	8EA300C312EF376200D392B0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* DevColor-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/chrisladd/Dev/DevColor/DevColor-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	8EA3FFA812EF156300D392B0 /* DevColor */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = DevColor;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8EA3FFC112EF156B00D392B0 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8EA3FFC212EF156B00D392B0 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8EA3FFD412EF19D900D392B0 /* CattailArtNSColor.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {980, 975}}";
+			sepNavSelRange = "{922, 0}";
+			sepNavVisRange = "{561, 2535}";
+		};
+	};
+	8EA3FFD512EF19D900D392B0 /* CattailArtNSColor.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {980, 7267}}";
+			sepNavSelRange = "{16558, 0}";
+			sepNavVisRange = "{15029, 1529}";
+		};
+	};
+	8EA3FFD912EF1A4000D392B0 /* DevColor.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {980, 675}}";
+			sepNavSelRange = "{467, 0}";
+			sepNavVisRange = "{0, 651}";
+		};
+	};
+	8EA3FFDA12EF1A4000D392B0 /* DevColor.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {980, 1443}}";
+			sepNavSelRange = "{1054, 0}";
+			sepNavVisRange = "{989, 1453}";
+		};
+	};
+}

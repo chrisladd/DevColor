@@ -1,0 +1,189 @@
+TDevColor Spotlight Importer
+v7
+r0
+t317667170.260501
+cCheck dependencies
+cProcessInfoPlistFile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/Info.plist Importer/Importer-Info.plist
+cCompileC "build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/GetMetadataForFile.o" /Users/chrisladd/Dev/DevColor/Importer/GetMetadataForFile.c normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/main.o" /Users/chrisladd/Dev/DevColor/Importer/main.c normal x86_64 c com.apple.compilers.gcc.4_2
+cCompileC "build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/MySpotlightImporter.o" /Users/chrisladd/Dev/DevColor/Importer/MySpotlightImporter.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/MacOS/DevColor normal x86_64
+cTouch /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter
+
+N/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004B73FC5E000000000052F740
+t1265892446
+s5437248
+
+N/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004B73FBEF000000000000043A
+t1265892335
+s1082
+
+N/System/Library/Frameworks/CoreFoundation.framework/Headers/CFPlugInCOM.h
+c000000004C239DAA0000000000000E87
+t1277402538
+s3719
+
+N/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h
+c000000004C239DAB0000000000000AF4
+t1277402539
+s2804
+
+N/System/Library/Frameworks/CoreServices.framework/Headers/CoreServices.h
+c000000004A11F0980000000000000400
+t1242689688
+s1024
+
+N/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CD605D10000000000B3E910
+t1289094609
+s11790608
+
+N/Users/chrisladd/Dev/DevColor/../../../../../../../../../../../../System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+c000000004CD606A40000000000781330
+t1289094820
+s7869232
+
+N/Users/chrisladd/Dev/DevColor/../../../../../../../../../../../../System/Library/Frameworks/CoreServices.framework/CoreServices
+c000000004C23F49F0000000000021710
+t1277424799
+s136976
+
+N/Users/chrisladd/Dev/DevColor/Importer/GetMetadataForFile.c
+c000000004D3EDDE30000000000000AE5
+t1295965667
+s2789
+i<CoreFoundation/CoreFoundation.h>
+i<CoreData/CoreData.h>
+i"MySpotlightImporter.h"
+
+N/Users/chrisladd/Dev/DevColor/Importer/MySpotlightImporter.h
+c000000004D3EDDE30000000000000314
+t1295965667
+s788
+i<Cocoa/Cocoa.h>
+
+N/Users/chrisladd/Dev/DevColor/Importer/MySpotlightImporter.m
+c000000004D3EDDE30000000000001618
+t1295965667
+s5656
+i"MySpotlightImporter.h"
+
+N/Users/chrisladd/Dev/DevColor/Importer/main.c
+c000000004D3EDDE30000000000002088
+t1295965667
+s8328
+i<CoreFoundation/CoreFoundation.h>
+i<CoreFoundation/CFPlugInCOM.h>
+i<CoreServices/CoreServices.h>
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter
+t1295965744
+s102
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/Info.plist
+t1295965743
+s2030
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/MacOS/DevColor
+t1295965744
+s24240
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/DevColor.LinkFileList
+c000000004D3EDE2F0000000000000185
+t1295965743
+s389
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/GetMetadataForFile.o
+t1295965743
+s13572
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/MySpotlightImporter.o
+t1295965743
+s30036
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/main.o
+t1295965743
+s10960
+
+NImporter/Importer-Info.plist
+c000000004D3EDDE30000000000000C02
+t1295965667
+s3074
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies317667170#317667170#0(0"0(0#1#0"8636372768#0"0#
+
+CCompileC "build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/GetMetadataForFile.o" /Users/chrisladd/Dev/DevColor/Importer/GetMetadataForFile.c normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317658543.034089
+e317658543.902120
+r1
+xCompileC
+xbuild/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/GetMetadataForFile.o
+x/Users/chrisladd/Dev/DevColor/Importer/GetMetadataForFile.c
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@67"Compile /Users/chrisladd/Dev/DevColor/Importer/GetMetadataForFile.c317658543#317658543#0(0"0(0#0#59"/Users/chrisladd/Dev/DevColor/Importer/GetMetadataForFile.c8607656480#907"    cd /Users/chrisladd/Dev/DevColor    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -gdwarf-2 "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DevColor.hmap" -F/Users/chrisladd/Dev/DevColor/build/Debug -I/Users/chrisladd/Dev/DevColor/build/Debug/include "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DerivedSources/x86_64" "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DerivedSources" -c /Users/chrisladd/Dev/DevColor/Importer/GetMetadataForFile.c -o "/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/GetMetadataForFile.o"0#
+
+CCompileC "build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/MySpotlightImporter.o" /Users/chrisladd/Dev/DevColor/Importer/MySpotlightImporter.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317658543.056614
+e317658543.917098
+r1
+xCompileC
+xbuild/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/MySpotlightImporter.o
+x/Users/chrisladd/Dev/DevColor/Importer/MySpotlightImporter.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@68"Compile /Users/chrisladd/Dev/DevColor/Importer/MySpotlightImporter.m317658543#317658543#0(0"0(0#0#60"/Users/chrisladd/Dev/DevColor/Importer/MySpotlightImporter.m8604281344#909"    cd /Users/chrisladd/Dev/DevColor    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -gdwarf-2 "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DevColor.hmap" -F/Users/chrisladd/Dev/DevColor/build/Debug -I/Users/chrisladd/Dev/DevColor/build/Debug/include "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DerivedSources/x86_64" "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DerivedSources" -c /Users/chrisladd/Dev/DevColor/Importer/MySpotlightImporter.m -o "/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/MySpotlightImporter.o"0#
+
+CCompileC "build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/main.o" /Users/chrisladd/Dev/DevColor/Importer/main.c normal x86_64 c com.apple.compilers.gcc.4_2
+s317658543.056049
+e317658543.636856
+r1
+xCompileC
+xbuild/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/main.o
+x/Users/chrisladd/Dev/DevColor/Importer/main.c
+xnormal
+xx86_64
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@53"Compile /Users/chrisladd/Dev/DevColor/Importer/main.c317658543#317658543#0(0"0(0#0#45"/Users/chrisladd/Dev/DevColor/Importer/main.c8607221312#869"    cd /Users/chrisladd/Dev/DevColor    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -mfix-and-continue -gdwarf-2 "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DevColor.hmap" -F/Users/chrisladd/Dev/DevColor/build/Debug -I/Users/chrisladd/Dev/DevColor/build/Debug/include "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DerivedSources/x86_64" "-I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/DerivedSources" -c /Users/chrisladd/Dev/DevColor/Importer/main.c -o "/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/main.o"0#
+
+CLd /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/MacOS/DevColor normal x86_64
+s317658543.917180
+e317658544.448723
+r1
+xLd
+x/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/MacOS/DevColor
+xnormal
+xx86_64
+lSLF07#2@90"Link /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/MacOS/DevColor317658543#317658544#0(0"0(0#0#0"8602704096#505"    cd /Users/chrisladd/Dev/DevColor    /Developer/usr/bin/gcc-4.2 -arch x86_64 -bundle -L/Users/chrisladd/Dev/DevColor/build/Debug -F/Users/chrisladd/Dev/DevColor/build/Debug -filelist "/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor Spotlight Importer.build/Objects-normal/x86_64/DevColor.LinkFileList" -framework CoreData -framework Foundation -framework CoreFoundation -framework CoreServices -o /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/MacOS/DevColor0#
+
+CProcessInfoPlistFile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/Info.plist Importer/Importer-Info.plist
+s317658543.010123
+e317658543.034009
+r1
+xProcessInfoPlistFile
+x/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/Info.plist
+xImporter/Importer-Info.plist
+lSLF07#2@36"Process Importer/Importer-Info.plist317658543#317658543#0(0"0(0#0#58"/Users/chrisladd/Dev/DevColor/Importer/Importer-Info.plist18859025310548068#218"    cd /Users/chrisladd/Dev/DevColor    builtin-infoPlistUtility Importer/Importer-Info.plist -expandbuildsettings -platform macosx -o /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter/Contents/Info.plist0#
+
+CTouch /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter
+s317658544.448781
+e317658544.466934
+r1
+xTouch
+x/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter
+lSLF07#2@67"Touch /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter317658544#317658544#0(0"0(0#0#0"8609204192#121"    cd /Users/chrisladd/Dev/DevColor    /usr/bin/touch -c /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter0#
+

@@ -1,0 +1,333 @@
+TDevColor
+v7
+r0
+t317667170.289854
+cCheck dependencies
+cProcessInfoPlistFile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Info.plist DevColor-Info.plist
+cCopyStringsFile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+cCompileXIB /Users/chrisladd/Dev/DevColor/English.lproj/MainMenu.xib
+cCpResource build/Debug/DevColor.app/Contents/Resources/devColorIcon.icns devColorIcon.icns
+cProcessPCH /var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch.gch DevColor_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cDataModelCompile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/DevColor_DataModel.mom /Users/chrisladd/Dev/DevColor/DevColor_DataModel.xcdatamodel
+cCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/main.o /Users/chrisladd/Dev/DevColor/main.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor_AppDelegate.o /Users/chrisladd/Dev/DevColor/DevColor_AppDelegate.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/CattailArtNSColor.o /Users/chrisladd/Dev/DevColor/CattailArtNSColor.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor.o /Users/chrisladd/Dev/DevColor/DevColor.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/MacOS/DevColor normal x86_64
+cPBXCp build/Debug/DevColor.app/Contents/Resources/../Library/Spotlight/DevColor.mdimporter build/Debug/DevColor.mdimporter
+cTouch /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004CAA740B00000000000000EE
+t1286239243
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004A1F2D63000000000000A5E0
+t1243557219
+s42464
+
+N/Users/chrisladd/Dev/DevColor/CattailArtNSColor.h
+c000000004D3EE28C0000000000000C18
+t1295966860
+s3096
+i<Cocoa/Cocoa.h>
+
+N/Users/chrisladd/Dev/DevColor/CattailArtNSColor.m
+c000000004D3EE26300000000000040AE
+t1295966819
+s16558
+i"CattailArtNSColor.h"
+
+N/Users/chrisladd/Dev/DevColor/DevColor.h
+c000000004D3EFB4D000000000000028B
+t1295973197
+s651
+i<Cocoa/Cocoa.h>
+
+N/Users/chrisladd/Dev/DevColor/DevColor.m
+c000000004D3EFBC80000000000000B57
+t1295973320
+s2903
+i"DevColor.h"
+i"NSColor+hex.h"
+
+N/Users/chrisladd/Dev/DevColor/DevColor_AppDelegate.h
+c000000004D3EDDE300000000000002FE
+t1295965667
+s766
+i<Cocoa/Cocoa.h>
+
+N/Users/chrisladd/Dev/DevColor/DevColor_AppDelegate.m
+c000000004D3EDDE300000000000028C6
+t1295965667
+s10438
+i"DevColor_AppDelegate.h"
+
+N/Users/chrisladd/Dev/DevColor/DevColor_DataModel.xcdatamodel
+c000000004D3EDDE30000000000000088
+t1295965667
+s136
+
+N/Users/chrisladd/Dev/DevColor/DevColor_Prefix.pch
+c000000004D3EDDE30000000000000093
+t1295965667
+s147
+i<Cocoa/Cocoa.h>
+
+N/Users/chrisladd/Dev/DevColor/English.lproj/InfoPlist.strings
+c000000004D3EDDE3000000000000005A
+t1295965667
+s90
+
+N/Users/chrisladd/Dev/DevColor/English.lproj/MainMenu.xib
+c000000004D3EFAA30000000000011BEC
+t1295973027
+s72684
+
+N/Users/chrisladd/Dev/DevColor/NSColor+hex.h
+c000000004D3EFC780000000000000415
+t1295973496
+s1045
+i<Cocoa/Cocoa.h>
+
+N/Users/chrisladd/Dev/DevColor/NSColor+hex.m
+c000000004D3EF4E500000000000000C3
+t1295971557
+s195
+i"NSColor+hex.h"
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app
+t1295974370
+s102
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Info.plist
+t1295974370
+s1470
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/MacOS/DevColor
+t1295973497
+s50056
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/PkgInfo
+t1295974370
+s8
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/../Library/Spotlight/DevColor.mdimporter
+t1295965747
+s102
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/DevColor_DataModel.mom
+t1295965746
+s488
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/English.lproj/InfoPlist.strings
+t1295965744
+s90
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/English.lproj/MainMenu.nib
+t1295973031
+s12283
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/devColorIcon.icns
+t1295974370
+s164002
+
+N/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter
+c000000004D3EDE300000000000000066
+t1295965744
+s102
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/CattailArtNSColor.o
+t1295966960
+s36812
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor.LinkFileList
+c000000004D3EE2EF00000000000001B5
+t1295966959
+s437
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor.o
+t1295973497
+s28040
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor_AppDelegate.o
+t1295965746
+s46524
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/NSColor+hex.o
+t2
+s0
+
+N/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/main.o
+t1295965746
+s4968
+
+N/Users/chrisladd/Dev/DevColor/devColorIcon.icns
+c000000004D3EFFAD00000000000280A2
+t1295974317
+s164002
+
+N/Users/chrisladd/Dev/DevColor/main.m
+c000000004D3EDDE300000000000000F9
+t1295965667
+s249
+i<Cocoa/Cocoa.h>
+
+N/var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch.gch
+t1295965746
+s54306576
+
+NDevColor-Info.plist
+c000000004D3EFFDB00000000000005FF
+t1295974363
+s1535
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies317667170#317667170#0(0"0(0#1#0"8634799232#0"0#
+
+CCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/CattailArtNSColor.o /Users/chrisladd/Dev/DevColor/CattailArtNSColor.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317659760.281375
+e317659760.411268
+r1
+xCompileC
+xbuild/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/CattailArtNSColor.o
+x/Users/chrisladd/Dev/DevColor/CattailArtNSColor.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@57"Compile /Users/chrisladd/Dev/DevColor/CattailArtNSColor.m317659760#317659760#0(0"0(0#0#49"/Users/chrisladd/Dev/DevColor/CattailArtNSColor.m8622895296#1051"    cd /Users/chrisladd/Dev/DevColor    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DevColor.hmap -F/Users/chrisladd/Dev/DevColor/build/Debug -I/Users/chrisladd/Dev/DevColor/build/Debug/include -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources/x86_64 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources -include /var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch -c /Users/chrisladd/Dev/DevColor/CattailArtNSColor.m -o /Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/CattailArtNSColor.o0#
+
+CCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor.o /Users/chrisladd/Dev/DevColor/DevColor.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317666297.765949
+e317666297.861138
+r1
+xCompileC
+xbuild/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor.o
+x/Users/chrisladd/Dev/DevColor/DevColor.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@48"Compile /Users/chrisladd/Dev/DevColor/DevColor.m317666297#317666297#0(0"0(0#0#40"/Users/chrisladd/Dev/DevColor/DevColor.m8636383648#1033"    cd /Users/chrisladd/Dev/DevColor    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DevColor.hmap -F/Users/chrisladd/Dev/DevColor/build/Debug -I/Users/chrisladd/Dev/DevColor/build/Debug/include -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources/x86_64 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources -include /var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch -c /Users/chrisladd/Dev/DevColor/DevColor.m -o /Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor.o0#
+
+CCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor_AppDelegate.o /Users/chrisladd/Dev/DevColor/DevColor_AppDelegate.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317658546.406238
+e317658546.514918
+r1
+xCompileC
+xbuild/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor_AppDelegate.o
+x/Users/chrisladd/Dev/DevColor/DevColor_AppDelegate.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@60"Compile /Users/chrisladd/Dev/DevColor/DevColor_AppDelegate.m317658546#317658546#0(0"0(0#0#52"/Users/chrisladd/Dev/DevColor/DevColor_AppDelegate.m8609041408#1057"    cd /Users/chrisladd/Dev/DevColor    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DevColor.hmap -F/Users/chrisladd/Dev/DevColor/build/Debug -I/Users/chrisladd/Dev/DevColor/build/Debug/include -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources/x86_64 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources -include /var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch -c /Users/chrisladd/Dev/DevColor/DevColor_AppDelegate.m -o /Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor_AppDelegate.o0#
+
+CCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/NSColor+hex.o /Users/chrisladd/Dev/DevColor/NSColor+hex.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/main.o /Users/chrisladd/Dev/DevColor/main.m normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317658546.405681
+e317658546.483761
+r1
+xCompileC
+xbuild/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/main.o
+x/Users/chrisladd/Dev/DevColor/main.m
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@44"Compile /Users/chrisladd/Dev/DevColor/main.m317658546#317658546#0(0"0(0#0#36"/Users/chrisladd/Dev/DevColor/main.m8609202144#1025"    cd /Users/chrisladd/Dev/DevColor    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DevColor.hmap -F/Users/chrisladd/Dev/DevColor/build/Debug -I/Users/chrisladd/Dev/DevColor/build/Debug/include -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources/x86_64 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources -include /var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch -c /Users/chrisladd/Dev/DevColor/main.m -o /Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/main.o0#
+
+CCompileXIB /Users/chrisladd/Dev/DevColor/English.lproj/MainMenu.xib
+s317665830.837508
+e317665831.067377
+r1
+xCompileXIB
+x/Users/chrisladd/Dev/DevColor/English.lproj/MainMenu.xib
+lSLF07#2@37"CompileXIB English.lproj/MainMenu.xib317665830#317665831#0(0"0(0#0#56"/Users/chrisladd/Dev/DevColor/English.lproj/MainMenu.xib8634474976#338"    cd /Users/chrisladd/Dev/DevColor    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/English.lproj/MainMenu.nib /Users/chrisladd/Dev/DevColor/English.lproj/MainMenu.xib --sdk /Developer/SDKs/MacOSX10.6.sdk0#
+
+CCopyStringsFile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+s317658544.473412
+e317658544.665853
+r1
+xCopyStringsFile
+x/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings317658544#317658544#0(0"0(0#0#61"/Users/chrisladd/Dev/DevColor/English.lproj/InfoPlist.strings8604212864#349"    cd /Users/chrisladd/Dev/DevColor    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/English.lproj0#
+
+CCpResource build/Debug/DevColor.app/Contents/Resources/devColorIcon.icns devColorIcon.icns
+s317667170.265312
+e317667170.287453
+r1
+xCpResource
+xbuild/Debug/DevColor.app/Contents/Resources/devColorIcon.icns
+xdevColorIcon.icns
+lSLF07#2@22"Copy devColorIcon.icns317667170#317667170#0(0"0(0#0#47"/Users/chrisladd/Dev/DevColor/devColorIcon.icns8633329568#321"    cd /Users/chrisladd/Dev/DevColor    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/chrisladd/Dev/DevColor/devColorIcon.icns /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources0#
+
+CDataModelCompile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/DevColor_DataModel.mom /Users/chrisladd/Dev/DevColor/DevColor_DataModel.xcdatamodel
+s317658546.405175
+e317658546.457535
+r1
+xDataModelCompile
+x/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/DevColor_DataModel.mom
+x/Users/chrisladd/Dev/DevColor/DevColor_DataModel.xcdatamodel
+lSLF07#2@68"Compile /Users/chrisladd/Dev/DevColor/DevColor_DataModel.xcdatamodel317658546#317658546#0(0"0(0#0#60"/Users/chrisladd/Dev/DevColor/DevColor_DataModel.xcdatamodel8604049280#252"    cd /Users/chrisladd/Dev/DevColor    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.6 /Users/chrisladd/Dev/DevColor/DevColor_DataModel.xcdatamodel /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/DevColor_DataModel.mom0#
+
+CLd /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/MacOS/DevColor normal x86_64
+s317666297.861211
+e317666297.888420
+r1
+xLd
+x/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/MacOS/DevColor
+xnormal
+xx86_64
+lSLF07#2@83"Link /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/MacOS/DevColor317666297#317666297#0(0"0(0#0#0"8644808864#502"    cd /Users/chrisladd/Dev/DevColor    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/chrisladd/Dev/DevColor/build/Debug -F/Users/chrisladd/Dev/DevColor/build/Debug -filelist /Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/Objects-normal/x86_64/DevColor.LinkFileList -mmacosx-version-min=10.6 -framework Cocoa -o /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/MacOS/DevColor0#
+
+CPBXCp build/Debug/DevColor.app/Contents/Resources/../Library/Spotlight/DevColor.mdimporter build/Debug/DevColor.mdimporter
+s317658547.103613
+e317658547.115498
+r1
+xPBXCp
+xbuild/Debug/DevColor.app/Contents/Resources/../Library/Spotlight/DevColor.mdimporter
+xbuild/Debug/DevColor.mdimporter
+lSLF07#2@36"Copy build/Debug/DevColor.mdimporter317658547#317658547#0(0"0(0#0#61"/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter8604177856#356"    cd /Users/chrisladd/Dev/DevColor    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.mdimporter /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Resources/../Library/Spotlight0#
+
+CProcessInfoPlistFile /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Info.plist DevColor-Info.plist
+s317667170.262411
+e317667170.265158
+r1
+xProcessInfoPlistFile
+x/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Info.plist
+xDevColor-Info.plist
+lSLF07#2@27"Process DevColor-Info.plist317667170#317667170#0(0"0(0#0#49"/Users/chrisladd/Dev/DevColor/DevColor-Info.plist8634154400#286"    cd /Users/chrisladd/Dev/DevColor    builtin-infoPlistUtility DevColor-Info.plist -genpkginfo /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app/Contents/Info.plist0#
+
+CProcessPCH /var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch.gch DevColor_Prefix.pch normal x86_64 objective-c com.apple.compilers.gcc.4_2
+s317658544.678671
+e317658546.405058
+r1
+xProcessPCH
+x/var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch.gch
+xDevColor_Prefix.pch
+xnormal
+xx86_64
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@30"Precompile DevColor_Prefix.pch317658544#317658546#0(0"0(0#0#49"/Users/chrisladd/Dev/DevColor/DevColor_Prefix.pch8603932352#939"    cd /Users/chrisladd/Dev/DevColor    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch x86_64 -fmessage-length=0 -pipe -std=gnu99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DevColor.hmap -F/Users/chrisladd/Dev/DevColor/build/Debug -I/Users/chrisladd/Dev/DevColor/build/Debug/include -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources/x86_64 -I/Users/chrisladd/Dev/DevColor/build/DevColor.build/Debug/DevColor.build/DerivedSources -c /Users/chrisladd/Dev/DevColor/DevColor_Prefix.pch -o /var/folders/v8/v86GtHG2Eymy+8k0Y7d1AE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/DevColor_Prefix-bxzwmhycgcrwbmdvvslnbcmbgrhe/DevColor_Prefix.pch.gch0#
+
+CTouch /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app
+s317667170.287885
+e317667170.289832
+r1
+xTouch
+x/Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app
+lSLF07#2@60"Touch /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app317667170#317667170#0(0"0(0#0#0"8644595776#114"    cd /Users/chrisladd/Dev/DevColor    /usr/bin/touch -c /Users/chrisladd/Dev/DevColor/build/Debug/DevColor.app0#
+
