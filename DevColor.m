@@ -11,15 +11,16 @@
 #import "DCColor.h"
 
 @implementation DevColor
-@synthesize colorMode, colorHistory, historyIndex;
+@synthesize colorMode, colorHistory, historyIndex, enjoysQuiet, fxArray, swatchNeeded;
 
 #define HISTORY_WELL_BASE_TAG 900
 #define LOCK_BASE_TAG 800
-#define HISTORY_LENGTH 6
+#define HISTORY_LENGTH 5
 
 
 -(void)awakeFromNib {
 	
+    
 	self.colorMode = uicolor;
 	self.historyIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"dColorIndex"];
 
@@ -39,6 +40,17 @@
         }
     }
     
+    soundMenuItem.target = self;
+    soundMenuItem.action = @selector(toggleSound:);
+    
+    self.enjoysQuiet = [[NSUserDefaults standardUserDefaults] boolForKey:@"enjoysQuiet"];
+    
+    if (self.enjoysQuiet) {
+        soundMenuItem.state = NSOffState;
+    } else {
+        soundMenuItem.state = NSOnState;
+        
+    }
     
     if (needsColorHistory) {
         [self setupColorHistory];
@@ -74,6 +86,19 @@
 	[self colorWellUpdated:nil];
 
     [self refreshHistoryWells];
+    
+    
+    
+    // and the sound fx
+  
+    NSSound *sound1 = [NSSound soundNamed:@"bip2.aif"];
+    NSSound *sound2 = [NSSound soundNamed:@"bip3.aif"];    
+    
+    sound1.volume = 0.1;
+    sound2.volume = 0.1;    
+
+    self.fxArray = [NSArray arrayWithObjects:sound1, sound2, nil];
+    
     
 }
 
@@ -126,15 +151,29 @@
 }
 
 
-
+-(IBAction)toggleSound:(id)sender {
+    
+    if (self.enjoysQuiet) {
+        self.enjoysQuiet = NO;
+    } else {
+        self.enjoysQuiet = YES;
+    }
+    
+    if (self.enjoysQuiet) {
+        soundMenuItem.state = NSOffState;
+    } else {
+        soundMenuItem.state = NSOnState;
+        
+    }    
+    
+    [[NSUserDefaults standardUserDefaults] setBool:self.enjoysQuiet forKey:@"enjoysQuiet"];
+    
+}
 
 
 -(IBAction)colorWellUpdated:(id)sender {
 	
 	NSColor *color = [colorWell color];
-    
-
-    
     
 	[[NSUserDefaults standardUserDefaults] setFloat:color.redComponent forKey:@"lastRed"];
 	[[NSUserDefaults standardUserDefaults] setFloat:color.greenComponent forKey:@"lastGreen"];
@@ -166,7 +205,8 @@
 	
 
 	copyableTextField.stringValue = codeString;
-	
+	self.swatchNeeded = YES;
+    
 }
 
 -(IBAction)swapColorMode:(id)sender {
@@ -221,41 +261,57 @@
     }
     
     
+    
+    // Play a random sound. You know, for fun.
+    
+    if (!self.enjoysQuiet) {
+        
+        int soundIndex = (arc4random() % self.fxArray.count);
+        NSSound *aSound = [self.fxArray objectAtIndex:soundIndex];
+
+        [aSound play];
+        
+    }
+    
 
     
     // and save our color, since our user obviously likes it.
     // swap the color in our colorHistory.
-    NSColor *color = colorWell.color;
-    DCColor *onDeckDCColor;
     
-    int i = 0;
+    if (self.swatchNeeded) {
     
-    while (i < HISTORY_LENGTH) {
-        self.historyIndex = (self.historyIndex + 1) % HISTORY_LENGTH;
-        onDeckDCColor = [self.colorHistory objectAtIndex:self.historyIndex];
-        
-        if (!onDeckDCColor.isLocked) {
+            NSColor *color = colorWell.color;
+            DCColor *onDeckDCColor;
             
-            // reset the color
-            onDeckDCColor.color = color;
+            int i = 0;
             
-            
-            // and the color well. You should be doing this with KVO, but oh well...
-            int wellGrabberInt = HISTORY_WELL_BASE_TAG + self.historyIndex;
-            NSColorWell *aWell = [mainView viewWithTag:wellGrabberInt];
-            aWell.color = color;
-            
-            
-            break;
-        }
-        
-        
-        i++;
+            while (i < HISTORY_LENGTH) {
+                self.historyIndex = (self.historyIndex + 1) % HISTORY_LENGTH;
+                onDeckDCColor = [self.colorHistory objectAtIndex:self.historyIndex];
+                
+                if (!onDeckDCColor.isLocked) {
+                    
+                    // reset the color
+                    onDeckDCColor.color = color;
+                    
+                    
+                    // and the color well. You should be doing this with KVO, but oh well...
+                    int wellGrabberInt = HISTORY_WELL_BASE_TAG + self.historyIndex;
+                    NSColorWell *aWell = [mainView viewWithTag:wellGrabberInt];
+                    aWell.color = color;
+                    
+                    // we no longer need a swatch -- we'll need one again when the Main color well is updated
+                    self.swatchNeeded = NO;
+                    
+                    break;
+                }
+                
+                
+                i++;
+            }
+            [self saveColorHistory];
+
     }
-    
-    
-    [self saveColorHistory];
-    
 }
 
 
@@ -290,7 +346,6 @@
     lock2.delegate = self;
     lock3.delegate = self;
     lock4.delegate = self;
-    lock5.delegate = self;
 
     
     
@@ -361,10 +416,9 @@
     lock2.delegate = nil;
     lock3.delegate = nil;
     lock4.delegate = nil;
-    lock5.delegate = nil;
 
     self.colorHistory = nil;
-    
+    self.fxArray = nil;
     
     [super dealloc];
 }

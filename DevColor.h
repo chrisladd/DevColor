@@ -23,14 +23,19 @@ typedef enum codeTypes {
     int historyIndex;
 	codeType colorMode;
 	
-
+    BOOL enjoysQuiet, swatchNeeded;
+    
+    NSArray *fxArray;
+    
+    IBOutlet NSMenuItem *soundMenuItem;
+    
     IBOutlet NSColorWell *colorWell;
     
 	IBOutlet NSComboBox *comboBox;
 	IBOutlet NSTextField *copyableTextField;
     IBOutlet NSButton *copyButton;
 
-    IBOutlet DCClickableImageView *lock0, *lock1, *lock2, *lock3, *lock4, *lock5;
+    IBOutlet DCClickableImageView *lock0, *lock1, *lock2, *lock3, *lock4;
     IBOutlet NSColorWell *historyWell0, *historyWell1, *historyWell2, *historyWell3, *historyWell4, *historyWell5; 
     
     IBOutlet NSView *mainView;
@@ -39,11 +44,14 @@ typedef enum codeTypes {
 
 @property int historyIndex;
 @property codeType colorMode;
-@property (retain) NSArray *colorHistory;
+@property (retain) NSArray *colorHistory, *fxArray;
+@property BOOL enjoysQuiet, swatchNeeded;
+-(IBAction)toggleSound:(id)sender;
 
 -(IBAction)colorWellUpdated:(id)sender;
 -(IBAction)swapColorMode:(id)sender;
 -(IBAction)copyCodeToClipboard:(id)sender;
+
 -(void)copyButtonNormal:(NSTimer *)aTimer;
 -(void)saveColorHistory;
 -(void)refreshHistoryWells;
