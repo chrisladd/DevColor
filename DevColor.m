@@ -11,7 +11,7 @@
 #import "DCColor.h"
 
 @implementation DevColor
-@synthesize colorMode, colorHistory, historyIndex, enjoysQuiet, fxArray, swatchNeeded;
+@synthesize colorMode, colorHistory, historyIndex, enjoysQuiet, fxArray, swatchNeeded, rFloat, gFloat, bFloat, hFloat, sFloat, tFloat;
 
 #define MAIN_SHADES_BASE_TAG 400
 #define COMPLENENT_BASE_TAG 500
@@ -27,8 +27,6 @@
 
 -(void)awakeFromNib {
 	
-    
-    
 	self.colorMode = uicolor;
 	self.historyIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"dColorIndex"];
 
@@ -98,13 +96,7 @@
 		[colorWell setColor:lastColor];
 	}
 	
-	int lastIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastColorMode"];
-	
-	if (!lastIndex) {
-		lastIndex = 0;
-	}
-	
-	[comboBox selectItemAtIndex:lastIndex];
+    [self resetComboSelection];
 	
 	[self swapColorMode:nil];
 	[self colorWellUpdated:nil];
@@ -123,9 +115,37 @@
 
     self.fxArray = [NSArray arrayWithObjects:sound1, sound2, nil];
     
+
+    // and welcome the people. again, for fun.
+
+    [self doWelcome];
     
 }
 
+
+-(void)doWelcome {
+    NSString *welcomePhrase = [self welcomePhrase];
+    
+    copyableTextField.stringValue = welcomePhrase;
+    [NSTimer scheduledTimerWithTimeInterval:2.8 target:self selector:@selector(resetTextField:) userInfo:nil repeats:NO];
+
+    
+    // and select the right drop down option... 
+    [self resetComboSelection];
+    
+}
+
+
+-(void)resetComboSelection {
+    int lastIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastColorMode"];
+	
+	if (!lastIndex) {
+		lastIndex = 0;
+	}
+	
+	[comboBox selectItemAtIndex:lastIndex];
+    
+}
 
 -(void)setupColorHistory {
     
@@ -320,11 +340,21 @@
 	[[NSUserDefaults standardUserDefaults] setFloat:color.blueComponent forKey:@"lastBlue"];
 	[[NSUserDefaults standardUserDefaults] setFloat:color.alphaComponent forKey:@"lastAlpha"];	
 	
-	NSString *codeString;
+    NSString *codeString = [self codeStringForColor:color];
+
+	copyableTextField.stringValue = codeString;
+	self.swatchNeeded = YES;
+    
+}
+
+
+-(NSString *)codeStringForColor:(NSColor *)color {
+    
+    NSString *codeString;
 	
 	switch (self.colorMode) {
 		case uicolor:
-		codeString = [NSString stringWithFormat:@"[UIColor colorWithRed:%.3f green:%.3f blue:%.3f alpha:%.2f]", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];	
+            codeString = [NSString stringWithFormat:@"[UIColor colorWithRed:%.3f green:%.3f blue:%.3f alpha:%.2f]", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];	
 			break;
 		case nscolor:
 			codeString = [NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%.2f green:%.2f blue:%.2f alpha:%.2f]", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];	
@@ -338,23 +368,22 @@
         case rgb:
             codeString = [color rgbValue];
             break;
-
+            
 		default:
 			break;
 	}
 	
 
-	copyableTextField.stringValue = codeString;
-	self.swatchNeeded = YES;
+    return codeString;    
+    
+    
     
 }
 
+
 -(IBAction)swapColorMode:(id)sender {
-	
-	int comboIndex = [comboBox indexOfSelectedItem];
-	
-	[[NSUserDefaults standardUserDefaults] setInteger:comboIndex forKey:@"lastColorMode"];
-	
+    int comboIndex = [comboBox indexOfSelectedItem];
+
 	switch (comboIndex) {
 		case 0:
 			self.colorMode = uicolor;
@@ -371,21 +400,38 @@
 		case 4:
 			self.colorMode = rgb;
 			break;
-	
+        case 5:
+            // display a random bit of silliness
+            [self doWelcome];
+            return;
+            break;
+        case 6:
+            colorWell.color = [self randomColor];
+            [self resetComboSelection];
+            
 		default:
 			break;
 	}
+    
+    if (comboIndex < 5) {
+	[[NSUserDefaults standardUserDefaults] setInteger:comboIndex forKey:@"lastColorMode"];        
+    }
 
+
+    
 	[self colorWellUpdated:nil];
 
 }
 
 -(IBAction)copyCodeToClipboard:(id)sender {
 	
-    if (sender != copyButton) {
-        [copyButton highlight:YES];
+    [copyableTextField resignFirstResponder];
+
+    
+    // guard against zealous copiers!
+    if ([copyableTextField.stringValue isEqualToString:@"Copied!"]) {
+        copyableTextField.stringValue = [self codeStringForColor:[colorWell color]];
         
-        [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(copyButtonNormal:) userInfo:nil repeats:NO];
     }
     
     
@@ -399,21 +445,21 @@
         [[NSColorPanel sharedColorPanel] close];
         
     }
+
+    NSString *colorString = copyableTextField.stringValue;
+    [copyButton highlight:YES];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(copyButtonNormal:) userInfo:colorString repeats:NO];
+
+    
+    // flash a nice notification.
+    copyableTextField.stringValue = @"Copied!";
+    
     
     
     
     // Play a random sound. You know, for fun.
-    
-    if (!self.enjoysQuiet) {
-        
-        int soundIndex = (arc4random() % self.fxArray.count);
-        NSSound *aSound = [self.fxArray objectAtIndex:soundIndex];
-
-        [aSound play];
-        
-    }
-    
-
+    [self playRandomSound];
     
     // and save our color, since our user obviously likes it.
     // swap the color in our colorHistory.
@@ -454,6 +500,21 @@
     }
 }
 
+
+-(void)playRandomSound {
+    
+    if (!self.enjoysQuiet) {
+        
+        int soundIndex = (arc4random() % self.fxArray.count);
+        NSSound *aSound = [self.fxArray objectAtIndex:soundIndex];
+        
+        [aSound play];
+        
+    }
+    
+
+    
+}
 
 
 -(void)updateShadedColorWellsForColor:(NSColor *)aColor withBaseTag:(int)baseTag {
@@ -559,9 +620,17 @@
     
 }
 
+-(void)resetTextField:(NSTimer *)aTimer {
+    copyableTextField.stringValue = [self codeStringForColor:[colorWell color]];
+    [self playRandomSound];
+    
+}
+
+
 
 -(void)copyButtonNormal:(NSTimer *)aTimer {
     [copyButton highlight:NO];
+    copyableTextField.stringValue = aTimer.userInfo;
 
 }
 
@@ -619,5 +688,31 @@
 }
 
 
+-(NSString *)welcomePhrase {
+    
+    NSArray *verbArray = [NSArray arrayWithObjects:@"pack", @"clean", @"fold", @"unload", @"load", @"archive", @"reverse-engineer", @"eat", @"tidy", nil];
+
+    NSArray *nounArray = [NSArray arrayWithObjects:@"eggs", @"laundry", @"couch cushions", @"desk", @"truck", @"biplane", @"automobile", @"bicycle", @"shirt-tails", @"kiwis", @"bananas", @"favorite mug", @"midnight snack", nil];
+    
+    NSString *verb = [verbArray objectAtIndex:(arc4random() % verbArray.count)];
+    NSString *noun = [nounArray objectAtIndex:(arc4random() % nounArray.count)];    
+    
+    NSString *welcomeString = [NSString stringWithFormat:@"DevColor will %@ your %@.", verb, noun];
+    
+    return welcomeString;
+}
+
+
+
+
+
+// text field delegate methods
+- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor {
+    NSLog(@"should begin editing.");
+    return YES;
+}
+
 
 @end
+
+

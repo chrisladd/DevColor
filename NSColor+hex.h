@@ -142,9 +142,16 @@ return hexString;
 
 -(NSArray *)twinColorCousinsSeparatedByDegrees:(float)degrees initialOffset:(float)offsetDegrees {
     
+    // normalize the 'color' at 1.0 brightness.
+    // I made a conscious choice NOT to use the color's brightness value here. If this upsets you, set normalizedColor to self.
+
+//    NSColor *normalizedColor = [NSColor colorWithCalibratedHue:self.hueComponent saturation:self.saturationComponent brightness:1.0 alpha:1.0];
+
+    NSColor *normalizedColor = self;
+    
     float decimalOffset = offsetDegrees / 360.0;
     
-    float startingDegrees = self.hueComponent + decimalOffset;
+    float startingDegrees = normalizedColor.hueComponent + decimalOffset;
     
     while (startingDegrees > 1.0) {
         startingDegrees -= 1.0;
@@ -163,10 +170,12 @@ return hexString;
         secondHue -= 1.0;
     }
     
+    float brightness;
+    brightness = 1.0;
     
-    NSColor *firstColor = [NSColor colorWithCalibratedHue:firstHue saturation:self.saturationComponent brightness:self.brightnessComponent alpha:1.0];
+    NSColor *firstColor = [NSColor colorWithCalibratedHue:firstHue saturation:normalizedColor.saturationComponent brightness:brightness alpha:1.0];
 
-    NSColor *secondColor = [NSColor colorWithCalibratedHue:secondHue saturation:self.saturationComponent brightness:self.brightnessComponent alpha:1.0];
+    NSColor *secondColor = [NSColor colorWithCalibratedHue:secondHue saturation:normalizedColor.saturationComponent brightness:brightness alpha:1.0];
     
     return [NSArray arrayWithObjects:firstColor, secondColor, nil];
 

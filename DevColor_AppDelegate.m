@@ -187,8 +187,8 @@
 	
 	}
 }
-*/
 
+*/
 
 /**
     Implementation of the applicationShouldTerminate: method, used here to

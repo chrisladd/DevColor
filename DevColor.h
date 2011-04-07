@@ -17,7 +17,8 @@ typedef enum codeTypes {
 	
 } codeType;
 
-@interface DevColor : NSObject<DCClickableImageViewDelegate> {
+@interface DevColor : NSObject<DCClickableImageViewDelegate, NSTextFieldDelegate> {
+    
     
     NSArray *colorHistory;
     NSColor *color0, *color1, *color2, *color3, *color4;
@@ -42,7 +43,6 @@ typedef enum codeTypes {
     
     IBOutlet NSView *mainView;
 	
-    
     IBOutlet NSSlider *rSlider;
     IBOutlet NSSlider *gSlider;
     IBOutlet NSSlider *bSlider;
@@ -51,10 +51,13 @@ typedef enum codeTypes {
     IBOutlet NSSlider *sSlider;
     IBOutlet NSSlider *tSlider; // t is for brighTness
 
+
+    float rFloat, gFloat, bFloat, hFloat, sFloat, tFloat;
     
     
 }
 
+@property float rFloat, gFloat, bFloat, hFloat, sFloat, tFloat;
 @property int historyIndex;
 @property codeType colorMode;
 @property (retain) NSArray *colorHistory, *fxArray;
@@ -75,9 +78,17 @@ typedef enum codeTypes {
 -(void)updateLocks;
 -(void)setupColorHistory;
 -(BOOL)sliderIsRGBSlider:(NSSlider *)theSlider;
+-(NSString *)codeStringForColor:(NSColor *)color;
+-(void)resetComboSelection;
+-(void)doWelcome;
+-(NSString *)welcomePhrase;
 
 -(void)updateShadedColorWellsForColor:(NSColor *)aColor withBaseTag:(int)baseTag;
 
+-(void)resetTextField:(NSTimer *)aTimer;
+
 -(NSColor *)randomColor;
+
+-(void)playRandomSound;
 
 @end
