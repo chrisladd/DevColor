@@ -708,13 +708,11 @@
                               
             }
             
-            
 
             if (self.wantsSet) { // [[...] set];
                 codeString = [NSString stringWithFormat:@"[%@ set];", codeString];
             } else if (self.wantsSemiColon) {
                 codeString = [NSString stringWithFormat:@"%@;", codeString];
-                
                 
             }
 
@@ -731,7 +729,13 @@
             }
 
             
-            
+            if (self.wantsSet) { // [[...] set];
+                codeString = [NSString stringWithFormat:@"[%@ set];", codeString];
+            } else if (self.wantsSemiColon) {
+                codeString = [NSString stringWithFormat:@"%@;", codeString];
+                
+            }
+
 				
             
 			break;
@@ -810,11 +814,11 @@
     NSString *colorString = copyableTextField.stringValue;
     [copyButton highlight:YES];
     
-    [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(copyButtonNormal:) userInfo:colorString repeats:NO];
 
-    
     // flash a nice notification.
     copyableTextField.stringValue = @"Copied!";
+    [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(copyButtonNormal:) userInfo:colorString repeats:NO];
+    
     
     
     
@@ -1054,6 +1058,8 @@
 }
 
 
+
+
 -(void)parseColorFromPasteboard:(id)sender {
 
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
@@ -1064,7 +1070,7 @@
         
         
         NSString *pString = [copiedItems objectAtIndex:0];
-        
+        pString = [pString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
         // UIColors
         if ([NSColor stringIsUIColor:pString]) {
@@ -1080,7 +1086,10 @@
                 colorWell.color = color;
                 [self colorWellUpdated:nil];
 
+
             }
+            copyableTextField.stringValue = [NSString stringWithFormat:@"Grabbed UIColor from Clipboard!"];
+            [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(resetTextField:) userInfo:nil repeats:NO];
 
              return;
         }
@@ -1100,21 +1109,29 @@
                 colorWell.color = color;
                 [self colorWellUpdated:nil];
                 
+
             }
-        
+
+            copyableTextField.stringValue = [NSString stringWithFormat:@"Grabbed NSColor from Clipboard!"];
+            [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(resetTextField:) userInfo:nil repeats:NO];
+
             return;
         
         }
         
-        
+
         
         // Hex
         if ([NSColor stringIsHex:pString]) {
-            NSLog(@"string is hex.");
             NSColor *color = [NSColor colorWithHexString:pString];
             colorWell.color = color;
             [self colorWellUpdated:nil];
 
+            copyableTextField.stringValue = [NSString stringWithFormat:@"Grabbed Hex Color from Clipboard!"];
+            [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(resetTextField:) userInfo:nil repeats:NO];
+
+            return;
+            
         }
         
         
@@ -1124,6 +1141,12 @@
             NSColor *color = [NSColor colorWithWebRGBString:pString];
             colorWell.color = color;
             [self colorWellUpdated:nil];
+        
+            copyableTextField.stringValue = [NSString stringWithFormat:@"Grabbed RGBA Color from Clipboard!"];
+            [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(resetTextField:) userInfo:nil repeats:NO];
+
+            return;
+            
         }
         
         
@@ -1132,11 +1155,25 @@
             NSColor *color = [NSColor colorWithWebRGBString:pString];
             colorWell.color = color;
             [self colorWellUpdated:nil];
+
+            copyableTextField.stringValue = [NSString stringWithFormat:@"Grabbed RGB Color from Clipboard!"];
+            [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(resetTextField:) userInfo:nil repeats:NO];
+            return;
         }
         
+
+        // if we've arrived here, we've been unsuccessful... 
+        // flash a nice notification.
+        copyableTextField.stringValue = [NSString stringWithFormat:@"Unable to parse! You entered: \n%@", pString];
+        [NSTimer scheduledTimerWithTimeInterval:0.8 target:self selector:@selector(resetTextField:) userInfo:nil repeats:NO];
+
         
     }
     
+
+
+
+
 }
 
 

@@ -195,22 +195,15 @@
 }
 
 
-/*
+
 - (void)applicationWillBecomeActive:(NSNotification *)aNotification {
 	
-	NSLog(@"will become active");
-	
-	if (panel.isVisible) {
-		NSLog(@"panel is visible");
-	} else {
-		NSLog(@"panel is not visible");
+	if (!panel.isVisible) {
+        [panel makeKeyAndOrderFront:nil];
 
-		
-	
 	}
 }
 
-*/
 
 /**
     Implementation of the applicationShouldTerminate: method, used here to

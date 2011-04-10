@@ -396,6 +396,7 @@
 				GCC_PREFIX_HEADER = DevColor_Prefix.pch;
 				INFOPLIST_FILE = "DevColor-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = DevColor;
 				WRAPPER_EXTENSION = app;
 			};
@@ -411,6 +412,7 @@
 				GCC_PREFIX_HEADER = DevColor_Prefix.pch;
 				INFOPLIST_FILE = "DevColor-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = DevColor;
 				WRAPPER_EXTENSION = app;
 			};

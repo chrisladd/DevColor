@@ -130,7 +130,14 @@ return hexString;
     
     
     if (hexString.length != 6) { 
-        return nil;
+
+        if (hexString.length == 3) {
+            hexString = [NSString stringWithFormat:@"%c%c%c%c%c%c", [hexString characterAtIndex:0],[hexString characterAtIndex:0], [hexString characterAtIndex:1], [hexString characterAtIndex:1], [hexString characterAtIndex:2], [hexString characterAtIndex:2]]; 
+        } else {
+        return nil;            
+            
+        }
+
         
     }
     
@@ -512,6 +519,10 @@ return hexString;
     if (tString.length == 6) { // don't worry if there are characters out of range -- we'll clip them to black in the conversion.
         return YES;
         
+    }
+    
+    if (tString.length == 3) {
+        return YES;
     }
     
     return NO;
