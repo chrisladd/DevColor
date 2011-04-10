@@ -24,7 +24,8 @@
 
 
 -(void)awakeFromNib {
-	
+    [self resetComboSelection];
+
     // set up the app
     [self setupColorHistory];
     [self setupMenuItems];
@@ -34,7 +35,6 @@
     [self setupColorWell];
     
     [self refreshHistoryWells];
-    [self resetComboSelection];
     
     [self setupSound];
     [self setupEvents];    
@@ -377,7 +377,7 @@
 -(void)resetComboSelection {
     int lastIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"lastColorMode"];
 	
-	if (!lastIndex) {
+	if (lastIndex < 0 || lastIndex > ([comboBox numberOfItems] - 1)) {
 		lastIndex = 0;
 	}
 	
