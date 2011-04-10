@@ -8,7 +8,7 @@
 
 #import "DevColor_AppDelegate.h"
 
-#define YOUR_EXTERNAL_RECORD_EXTENSION @"xxxx"
+#define YOUR_EXTERNAL_RECORD_EXTENSION @"devcolor"
 #define YOUR_STORE_TYPE NSXMLStoreType
 
 @implementation DevColor_AppDelegate
@@ -21,6 +21,17 @@
     the content, either in the NSApplicationSupportDirectory location or (if the
     former cannot be found), the system's temporary directory.
  */
+
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
+// register for keydown notifications, so we can determine when a user
+    
+    
+    
+}
+
+
 
 - (NSString *)applicationSupportDirectory {
 

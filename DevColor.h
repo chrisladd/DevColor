@@ -35,7 +35,9 @@ typedef enum codeTypes {
     IBOutlet NSColorWell *colorWell;
     
 	IBOutlet NSComboBox *comboBox;
-	IBOutlet NSTextField *copyableTextField;
+    IBOutlet NSComboBox *formatComboBox;
+	
+    IBOutlet NSTextField *copyableTextField;
     IBOutlet NSButton *copyButton;
 
     IBOutlet DCClickableImageView *lock0, *lock1, *lock2, *lock3, *lock4;
@@ -90,5 +92,22 @@ typedef enum codeTypes {
 -(NSColor *)randomColor;
 
 -(void)playRandomSound;
+-(void)parseColorFromPasteboard;
+
+
+// colors from strings...
+-(BOOL)stringIsUIColorHSB:(NSString *)aString;
+-(BOOL)stringIsUIColorRGB:(NSString *)aString;
+-(BOOL)stringIsUIColor:(NSString *)aString;
+
+
+-(BOOL)stringIsNSColorHSB:(NSString *)aString;
+-(BOOL)stringIsNSColorRGB:(NSString *)aString;
+-(BOOL)stringIsNSColor:(NSString *)aString;
+
+-(BOOL)stringIsHex:(NSString *)aString;
+-(BOOL)stringIsRGBA:(NSString *)aString;
+-(BOOL)stringIsRGB:(NSString *)aString;
+
 
 @end

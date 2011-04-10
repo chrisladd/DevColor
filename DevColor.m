@@ -120,6 +120,55 @@
 
     [self doWelcome];
     
+    
+    
+    
+    
+    // register for keydown notifications...
+    
+    [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
+                                          handler:^(NSEvent *incomingEvent) {
+                                              NSEvent *result = incomingEvent;
+                                                
+                                              char aChar = [result.characters characterAtIndex:0];
+                                              
+                                              if (aChar == 'v') {
+                                                  [self parseColorFromPasteboard];
+                                                  
+                                              }
+
+                                              
+                                              if (aChar == '[') {
+                                              
+                                              
+                                              }
+
+                                              if (aChar == ']') {
+                                                  
+                                                  
+                                              }
+
+                                              
+                                              
+                                              if (aChar == '=' | aChar == '+') {
+
+                                                  
+                                              }
+
+                                              
+                                              if (aChar == '-' | aChar == '_') {
+
+                                                  
+                                                  
+                                              }
+                                              
+
+                                              
+                                              
+                                              return result;
+                                          
+                                          }];
+    
 }
 
 
@@ -355,9 +404,20 @@
 	switch (self.colorMode) {
 		case uicolor:
             codeString = [NSString stringWithFormat:@"[UIColor colorWithRed:%.3f green:%.3f blue:%.3f alpha:%.2f]", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];	
-			break;
+
+			if ([formatComboBox indexOfSelectedItem] == 1) { // add ;
+                codeString = [NSString stringWithFormat:@"%@;", codeString];
+            }
+
+            if ([formatComboBox indexOfSelectedItem] == 2) { // [[...] set];
+                codeString = [NSString stringWithFormat:@"[%@ set];", codeString];
+            }
+
+            
+            break;
 		case nscolor:
 			codeString = [NSString stringWithFormat:@"[NSColor colorWithCalibratedRed:%.2f green:%.2f blue:%.2f alpha:%.2f]", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];	
+            
 			break;
 		case hex:
 			codeString = [color hexValue];
@@ -702,6 +762,267 @@
     return welcomeString;
 }
 
+
+-(void)parseColorFromPasteboard {
+
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSArray *classes = [[NSArray alloc] initWithObjects:[NSString class], nil];
+    NSDictionary *options = [NSDictionary dictionary];
+    NSArray *copiedItems = [pasteboard readObjectsForClasses:classes options:options];
+    if (copiedItems != nil) {
+        
+        
+        NSString *pString = [copiedItems objectAtIndex:0];
+        
+        
+        // UIColors
+        if ([self stringIsUIColor:pString]) {
+            
+            if ([self stringIsUIColorRGB:pString]) {
+                NSLog(@"string is RGB");
+                
+                NSColor *color = [NSColor colorWithRGBString:pString];
+                colorWell.color = color;
+                
+                
+            } else if ([self stringIsUIColorHSB:pString]) {
+                NSLog(@"string is HSB");
+                NSColor *color = [NSColor colorWithHSBString:pString];
+                colorWell.color = color;
+
+            }
+
+             return;
+        }
+        
+
+        // NSColors
+        if ([self stringIsNSColor:pString]) {
+            
+            if ([self stringIsNSColorRGB:pString]) {
+                NSLog(@"string is NSColor RGB");
+                NSColor *color = [NSColor colorWithRGBString:pString];
+                colorWell.color = color;
+                
+                
+            } else if ([self stringIsNSColorHSB:pString]) {
+                NSLog(@"string is NSColor HSB");
+                NSColor *color = [NSColor colorWithHSBString:pString];
+                colorWell.color = color;
+                
+            }
+        
+            return;
+        
+        }
+        
+        
+        
+        // Hex
+        if ([self stringIsHex:pString]) {
+            NSLog(@"string is hex.");
+            NSColor *color = [NSColor colorWithHexString:pString];
+            colorWell.color = color;
+
+        }
+        
+        
+        
+        // rgba
+        if ([self stringIsRGBA:pString]) {
+            NSLog(@"string is RGBA");
+        }
+        
+        
+        // rgb
+        if ([self stringIsRGB:pString]) {
+            NSLog(@"string is RGB");
+        }
+        
+        
+    }
+    
+}
+
+
+-(BOOL)stringIsNSColor:(NSString *)aString {
+    
+//    + (NSColor *)colorWithCalibratedRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
+
+    if ([aString rangeOfString:@"[NSColor "].location != NSNotFound) {
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+-(BOOL)stringIsNSColorRGB:(NSString *)aString {
+    //    + (NSColor *)colorWithCalibratedRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
+
+    
+    if ([aString rangeOfString:@"colorWithCalibratedRed:"].location == NSNotFound) {
+        return NO;
+        
+        if ([aString rangeOfString:@"green:"].location == NSNotFound) {
+            return NO;
+            
+            if ([aString rangeOfString:@"blue:"].location == NSNotFound) {
+                return NO;
+                
+                
+            }        
+            
+            
+        }        
+        
+    }
+    
+    
+    return YES;
+}
+
+
+
+-(BOOL)stringIsNSColorHSB:(NSString *)aString {
+    //+ (NSColor *)colorWithCalibratedHue:(CGFloat)hue saturation:(CGFloat)saturation brightness:(CGFloat)brightness alpha:(CGFloat)alpha
+
+    
+    if ([aString rangeOfString:@"colorWithCalibratedHue:"].location == NSNotFound) {
+        return NO;
+        
+        if ([aString rangeOfString:@"saturation:"].location == NSNotFound) {
+            return NO;
+            
+            if ([aString rangeOfString:@"brightness:"].location == NSNotFound) {
+                return NO;
+                
+                
+            }        
+            
+            
+        }        
+        
+    }
+    
+    
+    return YES;
+    
+}
+
+
+
+
+
+-(BOOL)stringIsUIColor:(NSString *)aString {
+    if ([aString rangeOfString:@"[UIColor "].location != NSNotFound) {
+        return YES;
+    }
+
+    return NO;
+    
+}
+
+
+
+-(BOOL)stringIsUIColorHSB:(NSString *)aString {
+    // + (UIColor *)colorWithHue:(CGFloat)hue saturation:(CGFloat)saturation brightness:(CGFloat)brightness alpha:(CGFloat)alpha
+
+    if ([aString rangeOfString:@"colorWithHue:"].location == NSNotFound) {
+        return NO;
+        
+        if ([aString rangeOfString:@"saturation:"].location == NSNotFound) {
+            return NO;
+        
+            if ([aString rangeOfString:@"brightness:"].location == NSNotFound) {
+                return NO;
+                
+                
+            }        
+        
+        
+        }        
+        
+    }
+
+    
+   return YES;
+    
+}
+
+
+
+
+-(BOOL)stringIsUIColorRGB:(NSString *)aString {
+
+    //        [UIColor colorWithRed:0.524 green:0.756 blue:0.989 alpha:1.00]
+
+    if ([aString rangeOfString:@"colorWithRed:"].location == NSNotFound) {
+        return NO;
+        
+        if ([aString rangeOfString:@"green:"].location == NSNotFound) {
+            return NO;
+            
+            if ([aString rangeOfString:@"blue:"].location == NSNotFound) {
+                return NO;
+                
+                
+            }        
+            
+            
+        }        
+        
+    }
+    
+    
+    return YES;
+}
+
+
+-(BOOL)stringIsHex:(NSString *)aString {
+    
+    NSString *tString = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    tString = [tString stringByReplacingOccurrencesOfString:@";" withString:@""];
+    tString = [tString stringByReplacingOccurrencesOfString:@"#" withString:@""];
+
+    
+    if (tString.length == 6) { // don't worry if there are characters out of range -- we'll clip them to black in the conversion.
+        return YES;
+        
+    }
+    
+    return NO;
+    
+}
+
+-(BOOL)stringIsRGBA:(NSString *)aString {
+    NSString *tString = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if (tString.length > 4) {
+        if ([[[tString substringToIndex:4] lowercaseString] isEqualToString:@"rgba"]) {
+            return YES;
+            
+        }
+    }
+    
+    return NO;
+}
+
+
+-(BOOL)stringIsRGB:(NSString *)aString {
+    NSString *tString = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if (tString.length > 4) {
+        if ([[[tString substringToIndex:3] lowercaseString] isEqualToString:@"rgb"]) {
+            
+            
+            
+        }
+    }
+    
+    return NO;
+}
 
 
 
