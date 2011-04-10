@@ -26,11 +26,11 @@ typedef enum codeTypes {
     int historyIndex;
 	codeType colorMode;
 	
-    BOOL enjoysQuiet, swatchNeeded;
+    BOOL enjoysQuiet, swatchNeeded, wantsHSB, wantsSemiColon, wantsSet;
     
     NSArray *fxArray;
     
-    IBOutlet NSMenuItem *soundMenuItem;
+    IBOutlet NSMenuItem *soundMenuItem, *RGBMenuItem, *addSemiColonMenuItem, *addSetMenuItem;
     
     IBOutlet NSColorWell *colorWell;
     
@@ -63,12 +63,19 @@ typedef enum codeTypes {
 @property int historyIndex;
 @property codeType colorMode;
 @property (retain) NSArray *colorHistory, *fxArray;
-@property BOOL enjoysQuiet, swatchNeeded;
+@property BOOL enjoysQuiet, swatchNeeded, wantsHSB, wantsSemiColon, wantsSet;
 
 @property (retain) NSColor *color0, *color1, *color2, *color3, *color4;
 
 -(void)saveColorHistory;
+
 -(IBAction)toggleSound:(id)sender;
+-(IBAction)toggleRGB:(id)sender;
+-(IBAction)toggleSet:(id)sender;
+-(IBAction)toggleSemiColon:(id)sender;
+
+-(void)setupMenuItems;
+
 -(IBAction)colorWellUpdated:(id)sender;
 -(IBAction)swapColorMode:(id)sender;
 -(IBAction)copyCodeToClipboard:(id)sender;
@@ -82,7 +89,10 @@ typedef enum codeTypes {
 -(BOOL)sliderIsRGBSlider:(NSSlider *)theSlider;
 -(NSString *)codeStringForColor:(NSColor *)color;
 -(void)resetComboSelection;
+
 -(void)doWelcome;
+-(void)doWelcomeWithReset:(BOOL)doesReset;
+
 -(NSString *)welcomePhrase;
 
 -(void)updateShadedColorWellsForColor:(NSColor *)aColor withBaseTag:(int)baseTag;
@@ -90,9 +100,10 @@ typedef enum codeTypes {
 -(void)resetTextField:(NSTimer *)aTimer;
 
 -(NSColor *)randomColor;
+-(IBAction)updateWithRandomColor:(id)sender;
 
 -(void)playRandomSound;
--(void)parseColorFromPasteboard;
+-(IBAction)parseColorFromPasteboard:(id)sender;
 
 
 // colors from strings...
@@ -108,6 +119,15 @@ typedef enum codeTypes {
 -(BOOL)stringIsHex:(NSString *)aString;
 -(BOOL)stringIsRGBA:(NSString *)aString;
 -(BOOL)stringIsRGB:(NSString *)aString;
+
+
+// altering hue/sat/bright
+-(IBAction)incrementHue:(id)sender;
+-(IBAction)decrementHue:(id)sender;
+-(IBAction)incrementSaturation:(id)sender;
+-(IBAction)decrementSaturation:(id)sender;
+-(IBAction)incrementBrightness:(id)sender;
+-(IBAction)decrementBrightness:(id)sender;
 
 
 @end

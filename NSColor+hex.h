@@ -25,6 +25,9 @@
 +(NSColor *)colorWithRGBString:(NSString *)aString;
 +(NSColor *)colorWithHSBString:(NSString *)aString;
 +(NSColor *)colorWithHexString:(NSString *)hexString;
+
++(NSColor *)colorWithWebRGBString:(NSString *)aString;
+
 @end
 
 
@@ -99,10 +102,7 @@ return hexString;
 
 +(NSColor *)colorWithHexString:(NSString *)hexString {
     
-    NSString *hexKey = @"0123456789ABCDEF";
     hexString = [hexString uppercaseString];
-    
-    
     
     hexString = [hexString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
@@ -116,101 +116,70 @@ return hexString;
     }
     
     
-    float redFloat;
-    float greenFloat;
-    float blueFloat;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
     
-    float k1 = 0;
-    float k2 = 0;
-
-    char c1 = [hexString characterAtIndex:0];
-    char c2 = [hexString characterAtIndex:1];
-    
-    // get the red
-    for (int i = 0; i < hexKey.length; i++) {
-        
-        if ([hexKey characterAtIndex:i] == c1) {
-            k1 = i;            
-            
-        }
-
-        
-        if ([hexKey characterAtIndex:i] == c2) {
-            k2 = i;
-            
-        }
-
-        
-    }
-    
-    redFloat = k1 * k2;
-    
-    
-    c1 = [hexString characterAtIndex:2];
-    c2 = [hexString characterAtIndex:3];
-    
-    k1 = 0.0;
-    k2 = 0.0;
-    
-    // get the green
-    for (int i = 0; i < hexKey.length; i++) {
-        
-        if ([hexKey characterAtIndex:i] == c1) {
-            k1 = i;            
-            
-        }
-        
-        
-        if ([hexKey characterAtIndex:i] == c2) {
-            k2 = i;
-            
-        }
-        
-        
-    }
-    
-    greenFloat = k1 * k2;
-
-    
-    c1 = [hexString characterAtIndex:4];
-    c2 = [hexString characterAtIndex:5];
-    
-    k1 = 0.0;
-    k2 = 0.0;
+    unsigned redInt;
+    unsigned greenInt;
+    unsigned blueInt;
     
 
+    scanner = [NSScanner scannerWithString:[hexString substringWithRange:NSMakeRange(0, 2)]];
+    [scanner scanHexInt:&redInt];
+
     
-    // get the blue
-    for (int i = 0; i < hexKey.length; i++) {
-        
-        if ([hexKey characterAtIndex:i] == c1) {
-            k1 = i;            
-            
-        }
-        
-        
-        if ([hexKey characterAtIndex:i] == c2) {
-            k2 = i;
-            
-        }
-        
-        
-    }
+    scanner = [NSScanner scannerWithString:[hexString substringWithRange:NSMakeRange(2, 2)]];
+    [scanner scanHexInt:&greenInt];
+
     
-    blueFloat = k1 * k2;
+    scanner = [NSScanner scannerWithString:[hexString substringWithRange:NSMakeRange(4, 2)]];
+    [scanner scanHexInt:&blueInt];
+
     
-    redFloat /= 256.0;
-    greenFloat /= 256.0;    
-    blueFloat /= 256.0;
+    float rFloat = redInt / 255.0;
+    float gFloat = greenInt / 255.0;
+    float bFloat = blueInt / 255.0;
     
-    NSLog(@"hex: %@", hexString);
-    NSLog(@"r:%f g:%f b:%f", redFloat, greenFloat, blueFloat);
-    NSColor *color = [NSColor colorWithCalibratedRed:redFloat green:greenFloat blue:blueFloat alpha:1.0];
-    
+    NSColor *color = [NSColor colorWithCalibratedRed:rFloat green:gFloat blue:bFloat alpha:1.0];
     
     return color;
     
 }
+
+
+
++(NSColor *)colorWithWebRGBString:(NSString *)aString {
+
+    //    rgba(255, 0, 0, 0.2)
+    
+    aString = [aString stringByReplacingOccurrencesOfString:@"rgba" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, aString.length)];
+
+    aString = [aString stringByReplacingOccurrencesOfString:@"(" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, aString.length)];
+
+    aString = [aString stringByReplacingOccurrencesOfString:@")" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, aString.length)];
+    
+    aString = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    NSArray *a = [aString componentsSeparatedByString:@","];
+    
+    if (a.count < 3) {
+        return nil;
+    }
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    float rFloat = [[formatter numberFromString:[a objectAtIndex:0]] floatValue] / 255.0;
+    float gFloat = [[formatter numberFromString:[a objectAtIndex:1]] floatValue] / 255.0;    
+    float bFloat = [[formatter numberFromString:[a objectAtIndex:2]] floatValue] / 255.0;    
+    
+    NSColor *color = [NSColor colorWithCalibratedRed:rFloat green:gFloat blue:bFloat alpha:1.0];
+    
+    [formatter release];
+    
+    return color;
+
+    
+}
+
 
 
 
@@ -331,6 +300,8 @@ return hexString;
     
     NSColor *color = [NSColor colorWithCalibratedRed:[[formatter numberFromString:rString] floatValue] green:[[formatter numberFromString:gString] floatValue] blue:[[formatter numberFromString:bString] floatValue] alpha:1.0];
     
+    [formatter release];
+    
     return color;
 
 }
@@ -364,6 +335,8 @@ return hexString;
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     
     NSColor *color = [NSColor colorWithCalibratedHue:[[formatter numberFromString:hString] floatValue] saturation:[[formatter numberFromString:sString] floatValue] brightness:[[formatter numberFromString:bString] floatValue] alpha:1.0];
+    
+    [formatter release];
     
     return color;
     
