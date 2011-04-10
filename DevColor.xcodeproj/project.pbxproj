@@ -91,7 +91,7 @@
 		8EA184B4134E057500B659E3 /* DCClickableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCClickableImageView.m; sourceTree = "<group>"; };
 		8EA184B6134E1ADF00B659E3 /* bip3.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = bip3.aif; sourceTree = "<group>"; };
 		8EA184B7134E1ADF00B659E3 /* bip2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = bip2.aif; sourceTree = "<group>"; };
-		8EA3005012EF2C6500D392B0 /* NSColor+hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+hex.h"; sourceTree = "<group>"; };
+		8EA3005012EF2C6500D392B0 /* NSColor+devColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+devColor.h"; sourceTree = "<group>"; };
 		8EA3FFD912EF1A4000D392B0 /* DevColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevColor.h; sourceTree = "<group>"; };
 		8EA3FFDA12EF1A4000D392B0 /* DevColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevColor.m; sourceTree = "<group>"; };
 		8EEAC3FE134D3FE20080A5BE /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8EA3005012EF2C6500D392B0 /* NSColor+hex.h */,
+				8EA3005012EF2C6500D392B0 /* NSColor+devColor.h */,
 				77C8280B06725ACE000B614F /* DevColor_AppDelegate.h */,
 				77C8280C06725ACE000B614F /* DevColor_AppDelegate.m */,
 				797A783E0DDCFB3E0050D0C2 /* Importer */,

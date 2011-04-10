@@ -7,18 +7,16 @@
 //
 
 #import "DevColor.h"
-#import "NSColor+hex.h"
+#import "NSColor+devColor.h"
 #import "DCColor.h"
 
 @implementation DevColor
-@synthesize colorMode, colorHistory, historyIndex, enjoysQuiet, fxArray, swatchNeeded, rFloat, gFloat, bFloat, hFloat, sFloat, tFloat, wantsSemiColon, wantsHSB, wantsSet;
+@synthesize colorMode, colorHistory, historyIndex, enjoysQuiet, fxArray, swatchNeeded, wantsSemiColon, wantsHSB, wantsSet;
 
 #define MAIN_SHADES_BASE_TAG 400
 #define COMPLENENT_BASE_TAG 500
 #define SPLIT_COMPLEMENT_BASE1 600
 #define SPLIT_COMPLEMENT_BASE2 700
-
-
 
 #define HISTORY_WELL_BASE_TAG 900
 #define LOCK_BASE_TAG 800
@@ -27,124 +25,89 @@
 
 -(void)awakeFromNib {
 	
-	self.colorMode = uicolor;
-	self.historyIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"dColorIndex"];
-
-    BOOL needsColorHistory = YES;
-    
-    NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"dColorData"];
-
-
-    if ([colorData isKindOfClass:[NSData class]]) {
-
-        NSData *filthyHistory = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
-    
-        if ([filthyHistory isKindOfClass:[NSArray class]]) {
-            NSArray *historyArray = (NSArray *)filthyHistory;
-            
-            DCColor *c0 = [historyArray objectAtIndex:0];
-            DCColor *c1 = [historyArray objectAtIndex:1];
-            DCColor *c2 = [historyArray objectAtIndex:2];
-            DCColor *c3 = [historyArray objectAtIndex:3];
-            DCColor *c4 = [historyArray objectAtIndex:4];
-
-            self.color0 = c0.color;
-            self.color0 = c1.color;
-            self.color0 = c2.color;
-            self.color0 = c3.color;
-            self.color0 = c4.color;
-
-            self.colorHistory = historyArray;
-            
-            needsColorHistory = NO;
-        
-        }
-    }
-    
-    
+    // set up the app
+    [self setupColorHistory];
     [self setupMenuItems];
-    
-    
-    
-    
-    if (needsColorHistory) {
-        [self setupColorHistory];
-        
-    }
-    
-    
-    
     [self setupLocks];
     [self updateLocks];
     
+    [self setupColorWell];
     
-	CGFloat lastRed = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRed"];
-	CGFloat lastGreen = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastGreen"];
-	CGFloat lastBlue = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastBlue"];
-	CGFloat lastAlpha = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastAlpha"]; 
-	NSColor *lastColor = [NSColor colorWithCalibratedRed:lastRed green:lastGreen blue:lastBlue alpha:lastAlpha];
-	
-//	NSLog(@"lastColor: %@", lastColor);
-	
-	if (lastColor) {
-		[colorWell setColor:lastColor];
-	}
-	
-    [self resetComboSelection];
-	
-	[self swapColorMode:nil];
-	[self colorWellUpdated:nil];
-
     [self refreshHistoryWells];
+    [self resetComboSelection];
     
+    [self setupSound];
+    [self setupEvents];    
+
+
+    // and welcome the nice people
+    [self doWelcome];
+
     
+}
+
+-(void)setupSound {
     
-    // and the sound fx
-  
     NSSound *sound1 = [NSSound soundNamed:@"bip2.aif"];
     NSSound *sound2 = [NSSound soundNamed:@"bip3.aif"];    
     
     sound1.volume = 0.1;
     sound2.volume = 0.1;    
-
+    
     self.fxArray = [NSArray arrayWithObjects:sound1, sound2, nil];
+
+    
+}
+
+
+-(void)setupColorWell {
+    
+    CGFloat lastRed = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastRed"];
+	CGFloat lastGreen = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastGreen"];
+	CGFloat lastBlue = [[NSUserDefaults standardUserDefaults] floatForKey:@"lastBlue"];
+	NSColor *lastColor = [NSColor colorWithCalibratedRed:lastRed green:lastGreen blue:lastBlue alpha:1.0];
+	
+	if (lastColor) {
+		[colorWell setColor:lastColor];
+	} else {
+        [colorWell setColor:[NSColor randomColor]];
+    }
+	
+	[self swapColorMode:nil];
+	[self colorWellUpdated:nil];
     
 
-    // and welcome the people. again, for fun.
+    
+}
 
-    [self doWelcome];
-    
-    
-    
-    
+-(void)setupEvents {
     
     // register for keydown notifications...
-    
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
                                           handler:^(NSEvent *incomingEvent) {
                                               
                                               NSEvent *result = incomingEvent;
-                                                
+                                              
                                               char aChar = [result.characters characterAtIndex:0];
                                               
                                               if (aChar == 'c') {
                                                   [self copyCodeToClipboard:nil];
                                                   result = nil;
                                               }                                              
-
+                                              
                                               // give the cutters a surprise...
                                               if (aChar == 'x') { 
                                                   [self copyCodeToClipboard:nil];
                                                   [self doWelcomeWithReset:NO];
                                                   result = nil;
                                               }                                              
-
+                                              
                                               
                                               if (aChar == 'v') {
                                                   [self parseColorFromPasteboard:nil];
                                                   result = nil;
                                               }
-
+                                              
                                               
                                               if (aChar == 'r') {
                                                   [self updateWithRandomColor:nil];
@@ -155,7 +118,7 @@
                                               
                                               
                                               if (aChar == '=' | aChar == '+' | aChar == '-' | aChar == '_') {
-
+                                                  
                                                   if (aChar == '-' | aChar == '_') {
                                                       [self decrementHue:nil];
                                                       
@@ -163,14 +126,14 @@
                                                       [self incrementHue:nil];
                                                       
                                                   }
-
+                                                  
                                                   result = nil;
                                                   
                                               }
-
                                               
                                               
-
+                                              
+                                              
                                               
                                               // saturation  
                                               if (aChar == ']' || aChar == '[') {
@@ -181,19 +144,19 @@
                                                       [self incrementSaturation:nil];
                                                       
                                                   }
-
-
+                                                  
+                                                  
                                                   result = nil;
                                               }
-
-
                                               
                                               
-                             
+                                              
+                                              
+                                              
                                               
                                               // brightness
                                               if (aChar == ';' | aChar == ':' | aChar == '\'' | aChar == '"') {
-
+                                                  
                                                   if (aChar == ';' | aChar == ':') {
                                                       [self decrementBrightness:nil];
                                                       
@@ -203,21 +166,18 @@
                                                   }
                                                   result = nil;
                                                   
-
+                                                  
                                               }
                                               
                                               
-
+                                              
                                               
                                               
                                               return result;
-                                          
+                                              
                                           }];
     
 }
-
-
-
 
 -(void)setupMenuItems {
     
@@ -409,9 +369,6 @@
     if (doesReset) {
     [NSTimer scheduledTimerWithTimeInterval:2.8 target:self selector:@selector(resetTextField:) userInfo:nil repeats:NO];
     
-    // and select the right drop down option... 
-    [self resetComboSelection];
-        
     }
     
 }
@@ -430,44 +387,71 @@
 
 -(void)setupColorHistory {
     
-    NSMutableArray *preColors = [NSMutableArray array];
+	self.historyIndex = [[NSUserDefaults standardUserDefaults] integerForKey:@"dColorIndex"];
+
+    BOOL needsColorHistory = YES;
     
-    for (int i = 0; i < HISTORY_LENGTH; i++) {
+    NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:@"dColorData"];
+    
+    
+    if ([colorData isKindOfClass:[NSData class]]) {
         
-        NSColor *rColor = [self randomColor];
-        DCColor *dColor = [DCColor colorWithNSColor:rColor];
+        NSData *filthyHistory = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
         
-        [preColors addObject:dColor];
+        if ([filthyHistory isKindOfClass:[NSArray class]]) {
+            NSArray *historyArray = (NSArray *)filthyHistory;
+            
+            DCColor *c0 = [historyArray objectAtIndex:0];
+            DCColor *c1 = [historyArray objectAtIndex:1];
+            DCColor *c2 = [historyArray objectAtIndex:2];
+            DCColor *c3 = [historyArray objectAtIndex:3];
+            DCColor *c4 = [historyArray objectAtIndex:4];
+            
+            self.color0 = c0.color;
+            self.color0 = c1.color;
+            self.color0 = c2.color;
+            self.color0 = c3.color;
+            self.color0 = c4.color;
+            
+            self.colorHistory = historyArray;
+            
+            needsColorHistory = NO;
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    if (needsColorHistory) {
+        NSMutableArray *preColors = [NSMutableArray array];
+        
+        for (int i = 0; i < HISTORY_LENGTH; i++) {
+            
+            NSColor *rColor = [NSColor randomColor];
+            DCColor *dColor = [DCColor colorWithNSColor:rColor];
+            
+            [preColors addObject:dColor];
+            
+        }
+        
+        
+        self.colorHistory = [NSArray arrayWithArray:preColors];
+        [self saveColorHistory];
         
     }
-  
     
-    self.colorHistory = [NSArray arrayWithArray:preColors];
-    [self saveColorHistory];
     
 }
 
 
 
-
--(NSColor *)randomColor {
-    float redFloat;
-    float greenFloat;
-    float blueFloat;
-
-    redFloat = (arc4random() % 100) / 100.0;
-    greenFloat = (arc4random() % 100) / 100.0;        
-    blueFloat = (arc4random() % 100) / 100.0;
-
-    NSColor *aColor = [NSColor colorWithCalibratedRed:redFloat green:greenFloat blue:blueFloat alpha:1.0];
-    
-    return aColor;
-    
-}
 
 -(IBAction)updateWithRandomColor:(id)sender {
     
-    colorWell.color = [self randomColor];
+    colorWell.color = [NSColor randomColor];
     [self colorWellUpdated:nil];
     self.swatchNeeded = YES;
 
@@ -792,24 +776,11 @@
 		case 4:
 			self.colorMode = rgb;
 			break;
-        case 5:
-            // display a random bit of silliness
-            [self doWelcome];
-            return;
-            break;
-        case 6:
-            colorWell.color = [self randomColor];
-            [self resetComboSelection];
-            
 		default:
 			break;
 	}
     
-    if (comboIndex < 5) {
 	[[NSUserDefaults standardUserDefaults] setInteger:comboIndex forKey:@"lastColorMode"];        
-    }
-
-
     
 	[self colorWellUpdated:nil];
 
@@ -1096,18 +1067,15 @@
         
         
         // UIColors
-        if ([self stringIsUIColor:pString]) {
+        if ([NSColor stringIsUIColor:pString]) {
             
-            if ([self stringIsUIColorRGB:pString]) {
-                NSLog(@"string is RGB");
-                
+            if ([NSColor stringIsUIColorRGB:pString]) {
                 NSColor *color = [NSColor colorWithRGBString:pString];
                 colorWell.color = color;
                 [self colorWellUpdated:nil];
 
                 
-            } else if ([self stringIsUIColorHSB:pString]) {
-                NSLog(@"string is HSB");
+            } else if ([NSColor stringIsUIColorHSB:pString]) {
                 NSColor *color = [NSColor colorWithHSBString:pString];
                 colorWell.color = color;
                 [self colorWellUpdated:nil];
@@ -1119,17 +1087,15 @@
         
 
         // NSColors
-        if ([self stringIsNSColor:pString]) {
+        if ([NSColor stringIsNSColor:pString]) {
             
-            if ([self stringIsNSColorRGB:pString]) {
-                NSLog(@"string is NSColor RGB");
+            if ([NSColor stringIsNSColorRGB:pString]) {
                 NSColor *color = [NSColor colorWithRGBString:pString];
                 colorWell.color = color;
                 [self colorWellUpdated:nil];
                 
                 
-            } else if ([self stringIsNSColorHSB:pString]) {
-                NSLog(@"string is NSColor HSB");
+            } else if ([NSColor stringIsNSColorHSB:pString]) {
                 NSColor *color = [NSColor colorWithHSBString:pString];
                 colorWell.color = color;
                 [self colorWellUpdated:nil];
@@ -1143,7 +1109,7 @@
         
         
         // Hex
-        if ([self stringIsHex:pString]) {
+        if ([NSColor stringIsHex:pString]) {
             NSLog(@"string is hex.");
             NSColor *color = [NSColor colorWithHexString:pString];
             colorWell.color = color;
@@ -1154,7 +1120,7 @@
         
         
         // rgba
-        if ([self stringIsRGBA:pString]) {
+        if ([NSColor stringIsRGBA:pString]) {
             NSColor *color = [NSColor colorWithWebRGBString:pString];
             colorWell.color = color;
             [self colorWellUpdated:nil];
@@ -1162,7 +1128,7 @@
         
         
         // rgb
-        if ([self stringIsRGB:pString]) {
+        if ([NSColor stringIsRGB:pString]) {
             NSColor *color = [NSColor colorWithWebRGBString:pString];
             colorWell.color = color;
             [self colorWellUpdated:nil];
@@ -1174,193 +1140,6 @@
 }
 
 
--(BOOL)stringIsNSColor:(NSString *)aString {
-    
-//    + (NSColor *)colorWithCalibratedRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
-
-    if ([aString rangeOfString:@"[NSColor "].location != NSNotFound) {
-        return YES;
-    }
-    
-    return NO;
-    
-}
-
--(BOOL)stringIsNSColorRGB:(NSString *)aString {
-    //    + (NSColor *)colorWithCalibratedRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
-
-    
-    if ([aString rangeOfString:@"colorWithCalibratedRed:"].location == NSNotFound) {
-        return NO;
-        
-        if ([aString rangeOfString:@"green:"].location == NSNotFound) {
-            return NO;
-            
-            if ([aString rangeOfString:@"blue:"].location == NSNotFound) {
-                return NO;
-                
-                
-            }        
-            
-            
-        }        
-        
-    }
-    
-    
-    return YES;
-}
-
-
-
--(BOOL)stringIsNSColorHSB:(NSString *)aString {
-    //+ (NSColor *)colorWithCalibratedHue:(CGFloat)hue saturation:(CGFloat)saturation brightness:(CGFloat)brightness alpha:(CGFloat)alpha
-
-    
-    if ([aString rangeOfString:@"colorWithCalibratedHue:"].location == NSNotFound) {
-        return NO;
-        
-        if ([aString rangeOfString:@"saturation:"].location == NSNotFound) {
-            return NO;
-            
-            if ([aString rangeOfString:@"brightness:"].location == NSNotFound) {
-                return NO;
-                
-                
-            }        
-            
-            
-        }        
-        
-    }
-    
-    
-    return YES;
-    
-}
-
-
-
-
-
--(BOOL)stringIsUIColor:(NSString *)aString {
-    if ([aString rangeOfString:@"[UIColor "].location != NSNotFound) {
-        return YES;
-    }
-
-    return NO;
-    
-}
-
-
-
--(BOOL)stringIsUIColorHSB:(NSString *)aString {
-    // + (UIColor *)colorWithHue:(CGFloat)hue saturation:(CGFloat)saturation brightness:(CGFloat)brightness alpha:(CGFloat)alpha
-
-    if ([aString rangeOfString:@"colorWithHue:"].location == NSNotFound) {
-        return NO;
-        
-        if ([aString rangeOfString:@"saturation:"].location == NSNotFound) {
-            return NO;
-        
-            if ([aString rangeOfString:@"brightness:"].location == NSNotFound) {
-                return NO;
-                
-                
-            }        
-        
-        
-        }        
-        
-    }
-
-    
-   return YES;
-    
-}
-
-
-
-
--(BOOL)stringIsUIColorRGB:(NSString *)aString {
-
-    //        [UIColor colorWithRed:0.524 green:0.756 blue:0.989 alpha:1.00]
-
-    if ([aString rangeOfString:@"colorWithRed:"].location == NSNotFound) {
-        return NO;
-        
-        if ([aString rangeOfString:@"green:"].location == NSNotFound) {
-            return NO;
-            
-            if ([aString rangeOfString:@"blue:"].location == NSNotFound) {
-                return NO;
-                
-                
-            }        
-            
-            
-        }        
-        
-    }
-    
-    
-    return YES;
-}
-
-
--(BOOL)stringIsHex:(NSString *)aString {
-    
-    NSString *tString = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-    tString = [tString stringByReplacingOccurrencesOfString:@";" withString:@""];
-    tString = [tString stringByReplacingOccurrencesOfString:@"#" withString:@""];
-
-    
-    if (tString.length == 6) { // don't worry if there are characters out of range -- we'll clip them to black in the conversion.
-        return YES;
-        
-    }
-    
-    return NO;
-    
-}
-
--(BOOL)stringIsRGBA:(NSString *)aString {
-    NSString *tString = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-    if (tString.length > 4) {
-        if ([[[tString substringToIndex:4] lowercaseString] isEqualToString:@"rgba"]) {
-            return YES;
-            
-        }
-    }
-    
-    return NO;
-}
-
-
--(BOOL)stringIsRGB:(NSString *)aString {
-    NSString *tString = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
-    if (tString.length > 4) {
-        if ([[[tString substringToIndex:3] lowercaseString] isEqualToString:@"rgb"]) {
-            
-            
-            
-        }
-    }
-    
-    return NO;
-}
-
-
-
-
-// text field delegate methods
-- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor {
-    NSLog(@"should begin editing.");
-    return YES;
-}
 
 
 -(void)dealloc {
@@ -1373,6 +1152,13 @@
     
     self.colorHistory = nil;
     self.fxArray = nil;
+    
+    self.color0 = nil;
+    self.color1 = nil;
+    self.color2 = nil;
+    self.color3 = nil;
+    self.color4 = nil;
+    
     
     [super dealloc];
 }

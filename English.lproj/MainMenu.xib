@@ -82,7 +82,7 @@
 									<reference key="NSOnImage" ref="893455832"/>
 									<reference key="NSMixedImage" ref="424226900"/>
 								</object>
-								<object class="NSMenuItem" id="1041409620">
+								<object class="NSMenuItem" id="370843703">
 									<reference key="NSMenu" ref="123765298"/>
 									<bool key="NSIsDisabled">YES</bool>
 									<bool key="NSIsSeparator">YES</bool>
@@ -264,7 +264,7 @@
 										</object>
 									</object>
 								</object>
-								<object class="NSMenuItem" id="1037304426">
+								<object class="NSMenuItem" id="912316093">
 									<reference key="NSMenu" ref="123765298"/>
 									<string key="NSTitle">Random Color</string>
 									<string key="NSKeyEquiv">r</string>
@@ -398,8 +398,6 @@
 									<string>Hex Value</string>
 									<string>rgba</string>
 									<string>rgb</string>
-									<string/>
-									<string>⇒ rand(color)</string>
 								</object>
 								<reference key="NSDelegate" ref="449612035"/>
 								<object class="NSComboTableView" key="NSTableView" id="316949736">
@@ -2333,14 +2331,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="535301902"/>
-						<reference key="destination" ref="172348575"/>
-					</object>
-					<int key="connectionID">930</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">copyableTextField</string>
 						<reference key="source" ref="172348575"/>
 						<reference key="destination" ref="535301902"/>
@@ -2447,7 +2437,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">updateWithRandomColor:</string>
 						<reference key="source" ref="172348575"/>
-						<reference key="destination" ref="1037304426"/>
+						<reference key="destination" ref="912316093"/>
 					</object>
 					<int key="connectionID">981</int>
 				</object>
@@ -2550,8 +2540,8 @@
 							<reference ref="757424346"/>
 							<reference ref="383354795"/>
 							<reference ref="800471946"/>
-							<reference ref="1037304426"/>
-							<reference ref="1041409620"/>
+							<reference ref="912316093"/>
+							<reference ref="370843703"/>
 						</object>
 						<reference key="parent" ref="376192112"/>
 					</object>
@@ -3336,12 +3326,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">980</int>
-						<reference key="object" ref="1037304426"/>
+						<reference key="object" ref="912316093"/>
 						<reference key="parent" ref="123765298"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">986</int>
-						<reference key="object" ref="1041409620"/>
+						<reference key="object" ref="370843703"/>
 						<reference key="parent" ref="123765298"/>
 					</object>
 				</object>
@@ -3523,8 +3513,6 @@
 						<string>Hex Value</string>
 						<string>rgba</string>
 						<string>rgb</string>
-						<string/>
-						<string>⇒ rand(color)</string>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3814,7 +3802,6 @@
 							<string>comboBox</string>
 							<string>copyButton</string>
 							<string>copyableTextField</string>
-							<string>formatComboBox</string>
 							<string>gSlider</string>
 							<string>hSlider</string>
 							<string>historyWell0</string>
@@ -3844,7 +3831,6 @@
 							<string>NSComboBox</string>
 							<string>NSButton</string>
 							<string>NSTextField</string>
-							<string>NSComboBox</string>
 							<string>NSSlider</string>
 							<string>NSSlider</string>
 							<string>NSColorWell</string>
@@ -3877,7 +3863,6 @@
 							<string>comboBox</string>
 							<string>copyButton</string>
 							<string>copyableTextField</string>
-							<string>formatComboBox</string>
 							<string>gSlider</string>
 							<string>hSlider</string>
 							<string>historyWell0</string>
@@ -3930,10 +3915,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">copyableTextField</string>
 								<string key="candidateClassName">NSTextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">formatComboBox</string>
-								<string key="candidateClassName">NSComboBox</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">gSlider</string>

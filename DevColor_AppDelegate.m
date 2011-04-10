@@ -11,6 +11,27 @@
 #define YOUR_EXTERNAL_RECORD_EXTENSION @"devcolor"
 #define YOUR_STORE_TYPE NSXMLStoreType
 
+
+
+/* Note to anybody but Chris Ladd:
+    You'll notice that...
+ 
+    - The project is set up for CoreData, but there is no implementation of CoreData. This is because:
+
+             * I originally anticipated adding more advanced features for saving lists of colors,e tc...
+
+             * I still haven't ruled out this possibility.
+
+             * CoreData is a pain in the ass to set up.
+
+ 
+ 
+ 
+ */
+
+
+
+
 @implementation DevColor_AppDelegate
 
 @synthesize window;
@@ -21,16 +42,6 @@
     the content, either in the NSApplicationSupportDirectory location or (if the
     former cannot be found), the system's temporary directory.
  */
-
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    
-// register for keydown notifications, so we can determine when a user
-    
-    
-    
-}
-
 
 
 - (NSString *)applicationSupportDirectory {
@@ -82,7 +93,7 @@
     NSManagedObjectModel *mom = [self managedObjectModel];
     if (!mom) {
         NSAssert(NO, @"Managed object model is nil");
-        NSLog(@"%@:%s No model to generate a store from", [self class], _cmd);
+//        NSLog(@"%@:%s No model to generate a store from", [self class], _cmd);
         return nil;
     }
 
@@ -175,7 +186,7 @@
     NSError *error = nil;
     
     if (![[self managedObjectContext] commitEditing]) {
-        NSLog(@"%@:%s unable to commit editing before saving", [self class], _cmd);
+//        NSLog(@"%@:%s unable to commit editing before saving", [self class], _cmd);
     }
 
     if (![[self managedObjectContext] save:&error]) {
@@ -212,7 +223,7 @@
     if (!managedObjectContext) return NSTerminateNow;
 
     if (![managedObjectContext commitEditing]) {
-        NSLog(@"%@:%s unable to commit editing to terminate", [self class], _cmd);
+//        NSLog(@"%@:%s unable to commit editing to terminate", [self class], _cmd);
         return NSTerminateCancel;
     }
 
