@@ -20,31 +20,28 @@ Currently supported color representations are:
 
 - UIColor 
 
-<br />
 
 ![UIColor](https://github.com/chrisladd/DevColor/raw/master/images/UIColorSnippet.png)
 
 - NSColor
 
-<br />
 
 ![NSColor](https://github.com/chrisladd/DevColor/raw/master/images/NSColorSnippet.png)
 
 - Hex (web)
 
-<br />
 
 ![Hex](https://github.com/chrisladd/DevColor/raw/master/images/HexColorSnippet.png)
 
 - rgba (web)
 
-<br />
 
 ![RGBA](https://github.com/chrisladd/DevColor/raw/master/images/RGBAColorSnippet.png)
 
 - rgb (web)
-<br />
->![RGB](https://github.com/chrisladd/DevColor/raw/master/images/RGBSnippet.png)
+
+
+![RGB](https://github.com/chrisladd/DevColor/raw/master/images/RGBSnippet.png)
 
 
 
@@ -53,14 +50,17 @@ Choose a color, then copy it to your clipboard:
 ![Copy to clipboard](https://github.com/chrisladd/DevColor/raw/master/images/copyToClipboardButton.png)
 
 You may also, naturally, use the shortcut "Command + C" to copy.
+
 For Objective-C style color strings, you can choose whether you prefer RGB or HSV style strings in the DevColor menu. 
+
+![Prefer RGB? Go for it.](https://github.com/chrisladd/DevColor/raw/master/images/devColor_preferRGB.png)
 
 
 ###Importing colors (a.k.a. 'Pasting')
 
-![Get color from pasteboard](https://github.com/chrisladd/DevColor/raw/master/images/devColor_getColor.png)
-
 Often, you'll have colors represented as strings within a project you're already working on, and you may want to use DevColor to either tweak those colors, or convert them to a different format. Simply select the string in question in your project (for instance: #000). Copy that string to your clipboard, and, in DevColor, paste it into the main window either through the DevColor => Get Color From Clipboard menu item, or by simply using the shortcut "Command + V". 
+
+![Get color from pasteboard](https://github.com/chrisladd/DevColor/raw/master/images/devColor_getColor.png)
 
 DevColor will translate that string into whatever representation you're currently viewing, for instance, the UIColor representation of #000 would be [UIColor colorWithRed:0.000 green:0.000 blue:0.000 alpha:1.00].
 
@@ -99,7 +99,7 @@ Below the sliders, you'll find three bays of complementary colors corresponding 
 ![Complementary colors](https://github.com/chrisladd/DevColor/raw/master/images/devColor_complements.png)
 
 
-For more on how I arrive at these, check out the main DevColor NSColor category, NSColor+DevColor.h. You'll want to check out the complement and twinColorCousinsSeparatedByDegrees: initialOffset: methods in particular -- I've annotated how I get there in the comments. This is an area where I could use some help, so if anyone has a better idea of which colors would be useful to automatically generate, and/or how to best generate them, shoot me an email.
+For more on how I arrive at these, check out the main DevColor NSColor category, [NSColor+DevColor.h](https://github.com/chrisladd/DevColor/blob/master/NSColor+devColor.h). You'll want to check out the complement and twinColorCousinsSeparatedByDegrees: initialOffset: methods in particular -- I've annotated how I get there in the comments. This is an area where I could use some help, so if anyone has a better idea of which colors would be useful to automatically generate, and/or how to best generate them, shoot me an email.
 
 
 
