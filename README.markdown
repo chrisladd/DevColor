@@ -45,7 +45,7 @@ Currently supported color representations are:
 
 
 
-Choose a color, then copy it to your clipboard:
+Choose a color, choose a code type from the drop-down menu, and then copy it to your clipboard:
 
 ![Copy to clipboard](https://github.com/chrisladd/DevColor/raw/master/images/copyToClipboardButton.png)
 
@@ -56,7 +56,7 @@ For Objective-C style color strings, you can choose whether you prefer RGB or HS
 ![Prefer RGB? Go for it.](https://github.com/chrisladd/DevColor/raw/master/images/devColor_preferRGB.png)
 
 
-###Importing colors (a.k.a. 'Pasting')
+##Importing colors (a.k.a. 'Pasting')
 
 Often, you'll have colors represented as strings within a project you're already working on, and you may want to use DevColor to either tweak those colors, or convert them to a different format. Simply select the string in question in your project (for instance: #000). Copy that string to your clipboard, and, in DevColor, paste it into the main window either through the DevColor => Get Color From Clipboard menu item, or by simply using the shortcut "Command + V". 
 
@@ -70,7 +70,7 @@ This is useful if, for instance, you're building a companion website for your iP
 
 
 
-###Recent Colors
+##Recent Colors
 
 As you copy strings to your clipboard, they'll automatically be saved for you in your recent colors pallet, to the immediate left of the main color panel. 
 
@@ -79,7 +79,7 @@ As you copy strings to your clipboard, they'll automatically be saved for you in
 
 These are overwritten automatically, in order, as you work, so if you want a particular color to stick around, click the little lock icon next to any color well. That color will be saved and not overwritten until you unlock it. But remember that you only have five savable colors, so if you lock them all, you won't be autosaving your recents anymore. 
 
-The idea is to give a little grace period as you're working, so that if you think to yourself "Oh, man, I JUST had the perfect green… " it's easy enough to find it and save it. Just drag any recent color well to the big, main color well to work with it again.
+The idea is to give a little grace period as you're working, so that if you think to yourself "Oh, man, I JUST had the perfect green..." it's easy enough to find it and save it. Just drag any recent color well to the big, main color well to work with it again.
 
 What if you want to save MORE than 5 colors, and save them more permanently? This is something I'd like to build into DevColor -- some kind of simple table of saved colors -- but until I get to it, might I suggest a plain text file with a list? DevColor reads color strings brilliantly, so you can always paste them back in.
 
@@ -103,7 +103,7 @@ For more on how I arrive at these, check out the main DevColor NSColor category,
 
 
 
-###Tweaking Colors
+##Tweaking Colors
  
 Use the sliders to the right of the main color well to adjust red, green, blue or hue, saturation, and brightness, respectively. 
 
@@ -120,7 +120,7 @@ I chose these keys not because of any inherent meaning, but because they're stac
 Incidentally, you can also press 'R' for a random color. You know, for kids. 
 
 
-###Tweaking Strings
+##Tweaking Strings
 
 ![Appending helpful doowhappies](https://github.com/chrisladd/DevColor/raw/master/images/devColor_append.png)
 
@@ -131,7 +131,7 @@ Writing this, I realize now an option to append the # symbol to hex colors would
 NB: The reason I chose to exclude # symbols from hex strings in the first place was because when triple clicking to select them, the # is never selected. I figured it would be easier to add a # where you want it rather than delete it every time you paste in a hex color which, in a big CSS file, is often.
 
 
-###How You, Too, Can Have DevColor In Your Life
+##How You, Too, Can Have DevColor In Your Life
 
 While the source code is fully available here to download and compile yourself, a compiled binary is available [here](https://github.com/downloads/chrisladd/DevColor/DevColor.zip). All code is distributed under the [MIT license](http://en.wikipedia.org/wiki/MIT_License), meaning you can feel free to use parts of it in your own work.
 
