@@ -18,19 +18,32 @@ Just click the large color well in the center to bring up the OSX color picker. 
 
 Currently supported color representations are:
 
-- UIColor
+- UIColor 
+
+<br />
+
 ![UIColor](https://github.com/chrisladd/DevColor/raw/master/images/UIColorSnippet.png)
 
 - NSColor
+
+<br />
+
 ![NSColor](https://github.com/chrisladd/DevColor/raw/master/images/NSColorSnippet.png)
 
 - Hex (web)
+
+<br />
+
 ![Hex](https://github.com/chrisladd/DevColor/raw/master/images/HexColorSnippet.png)
 
 - rgba (web)
+
+<br />
+
 ![RGBA](https://github.com/chrisladd/DevColor/raw/master/images/RGBAColorSnippet.png)
 
 - rgb (web)
+<br />
 >![RGB](https://github.com/chrisladd/DevColor/raw/master/images/RGBSnippet.png)
 
 
@@ -44,6 +57,9 @@ For Objective-C style color strings, you can choose whether you prefer RGB or HS
 
 
 ###Importing colors (a.k.a. 'Pasting')
+
+![Get color from pasteboard](https://github.com/chrisladd/DevColor/raw/master/images/devColor_getColor.png)
+
 Often, you'll have colors represented as strings within a project you're already working on, and you may want to use DevColor to either tweak those colors, or convert them to a different format. Simply select the string in question in your project (for instance: #000). Copy that string to your clipboard, and, in DevColor, paste it into the main window either through the DevColor => Get Color From Clipboard menu item, or by simply using the shortcut "Command + V". 
 
 DevColor will translate that string into whatever representation you're currently viewing, for instance, the UIColor representation of #000 would be [UIColor colorWithRed:0.000 green:0.000 blue:0.000 alpha:1.00].
@@ -106,6 +122,8 @@ Incidentally, you can also press 'R' for a random color. You know, for kids.
 
 ###Tweaking Strings
 
+![Appending helpful doowhappies](https://github.com/chrisladd/DevColor/raw/master/images/devColor_append.png)
+
 Often, in the Objective-C world, it would make life easier to append a semicolon, or to apply the [SOMECOLOR set] method if, for instance, you're implementing drawRect and just need to set the context's current color. DevColor makes this easy -- you can turn this behavior on and off through the DevColor => Append subMenu. Regardless of whether these are on or off, they will only be applied to Objective-C style strings, e.g. UIColor and NSColor.
 
 Writing this, I realize now an option to append the # symbol to hex colors would have been helpful, also. Whoops. Next version. 
@@ -121,7 +139,7 @@ I've benefitted a great deal from the generosity of others as I continue to grow
 
 If you like DevColor, check out some of my other projects on my website at [http://www.ladditude.com](http://www.ladditude.com). Or you can check out my [iOS apps on the iTunes app store](http://itunes.com/apps/walksoft). Or you can follow me on Twitter at @chrisladd. Or you can buy me a beer at WWDC -- I'll be there.
 
-Hope you like it, and please, let me know what you think. You can email me at chris [atMeaningThe@Symbol] ladditude [dotMeaningA.Period] com.
+Hope you like it, and please, let me know what you think. You can email me at chris + [atMeaningThe@Symbol] + ladditude + [dotMeaningA.Period] + com
 
 -Chris
 
