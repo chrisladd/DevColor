@@ -82,7 +82,7 @@
 									<reference key="NSOnImage" ref="893455832"/>
 									<reference key="NSMixedImage" ref="424226900"/>
 								</object>
-								<object class="NSMenuItem" id="943276240">
+								<object class="NSMenuItem" id="158646159">
 									<reference key="NSMenu" ref="123765298"/>
 									<bool key="NSIsDisabled">YES</bool>
 									<bool key="NSIsSeparator">YES</bool>
@@ -264,7 +264,7 @@
 										</object>
 									</object>
 								</object>
-								<object class="NSMenuItem" id="1064248089">
+								<object class="NSMenuItem" id="170914022">
 									<reference key="NSMenu" ref="123765298"/>
 									<string key="NSTitle">Random Color</string>
 									<string key="NSKeyEquiv">r</string>
@@ -1907,7 +1907,6 @@
 							<string key="NSFrame">{{517, 46}, {15, 15}}</string>
 							<reference key="NSSuperview" ref="976864570"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<int key="NSTag">709</int>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSColor" key="NSColor">
@@ -2437,7 +2436,7 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">updateWithRandomColor:</string>
 						<reference key="source" ref="172348575"/>
-						<reference key="destination" ref="1064248089"/>
+						<reference key="destination" ref="170914022"/>
 					</object>
 					<int key="connectionID">981</int>
 				</object>
@@ -2472,6 +2471,14 @@
 						<reference key="destination" ref="559349647"/>
 					</object>
 					<int key="connectionID">985</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">panel</string>
+						<reference key="source" ref="172348575"/>
+						<reference key="destination" ref="137249332"/>
+					</object>
+					<int key="connectionID">987</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2540,8 +2547,8 @@
 							<reference ref="757424346"/>
 							<reference ref="383354795"/>
 							<reference ref="800471946"/>
-							<reference ref="1064248089"/>
-							<reference ref="943276240"/>
+							<reference ref="170914022"/>
+							<reference ref="158646159"/>
 						</object>
 						<reference key="parent" ref="376192112"/>
 					</object>
@@ -3326,12 +3333,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">980</int>
-						<reference key="object" ref="1064248089"/>
+						<reference key="object" ref="170914022"/>
 						<reference key="parent" ref="123765298"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">986</int>
-						<reference key="object" ref="943276240"/>
+						<reference key="object" ref="158646159"/>
 						<reference key="parent" ref="123765298"/>
 					</object>
 				</object>
@@ -3651,7 +3658,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">986</int>
+			<int key="maxID">987</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3822,6 +3829,7 @@
 							<string>lock3</string>
 							<string>lock4</string>
 							<string>mainView</string>
+							<string>panel</string>
 							<string>rSlider</string>
 							<string>sSlider</string>
 							<string>soundMenuItem</string>
@@ -3850,6 +3858,7 @@
 							<string>DCClickableImageView</string>
 							<string>DCClickableImageView</string>
 							<string>NSView</string>
+							<string>NSPanel</string>
 							<string>NSSlider</string>
 							<string>NSSlider</string>
 							<string>NSMenuItem</string>
@@ -3881,6 +3890,7 @@
 							<string>lock3</string>
 							<string>lock4</string>
 							<string>mainView</string>
+							<string>panel</string>
 							<string>rSlider</string>
 							<string>sSlider</string>
 							<string>soundMenuItem</string>
@@ -3971,6 +3981,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">mainView</string>
 								<string key="candidateClassName">NSView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">panel</string>
+								<string key="candidateClassName">NSPanel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">rSlider</string>
