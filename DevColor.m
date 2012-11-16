@@ -43,6 +43,21 @@
 #define HISTORY_LENGTH 5
 
 
+- (NSColor *)colorFromScreenAtPoint:(NSPoint)point {
+    CGImageRef image = CGDisplayCreateImageForRect(CGMainDisplayID(), CGRectMake(point.x, point.y, 1, 1));
+    NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc] initWithCGImage:image];
+    CGImageRelease(image);
+    NSColor *color = [bitmap colorAtX:0 y:0];
+    [bitmap release];
+    
+    return color;
+    
+}
+
+- (void)mouseMoved:(NSEvent *)theEvent {
+    NSLog(@"%@", theEvent);
+}
+
 -(void)awakeFromNib {
     [self resetComboSelection];
 
@@ -104,6 +119,18 @@
 }
 
 -(void)setupEvents {
+
+//    [NSEvent addGlobalMonitorForEventsMatchingMask:NSMouseMovedMask
+//                                           handler:^(NSEvent *incomingEvent) {
+//                                                NSPoint eventLocation = [NSEvent mouseLocation];
+//                                                NSColor *color = [self colorFromScreenAtPoint:eventLocation];
+//                                                [self setColor:color];
+//                                                NSLog(@"%@", color);
+//                                           }];
+//    
+//    
+    
+    
     
     // register for keydown notifications...
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
@@ -125,23 +152,17 @@
                                                   result = nil;
                                               }                                              
                                               
-                                              
                                               if (aChar == 'v') {
                                                   [self parseColorFromPasteboard:nil];
                                                   result = nil;
                                               }
-                                              
                                               
                                               if (aChar == 'r') {
                                                   [self updateWithRandomColor:nil];
                                                   result = nil;
                                               }
                                               
-                                              
-                                              
-                                              
                                               if (aChar == '=' | aChar == '+' | aChar == '-' | aChar == '_') {
-                                                  
                                                   if (aChar == '-' | aChar == '_') {
                                                       [self decrementHue:nil];
                                                       
@@ -151,12 +172,7 @@
                                                   }
                                                   
                                                   result = nil;
-                                                  
                                               }
-                                              
-                                              
-                                              
-                                              
                                               
                                               // saturation  
                                               if (aChar == ']' || aChar == '[') {
@@ -165,41 +181,24 @@
                                                       
                                                   } else {
                                                       [self incrementSaturation:nil];
-                                                      
                                                   }
-                                                  
                                                   
                                                   result = nil;
                                               }
                                               
-                                              
-                                              
-                                              
-                                              
-                                              
                                               // brightness
                                               if (aChar == ';' | aChar == ':' | aChar == '\'' | aChar == '"') {
-                                                  
                                                   if (aChar == ';' | aChar == ':') {
                                                       [self decrementBrightness:nil];
                                                       
                                                   } else {
                                                       [self incrementBrightness:nil];
-                                                      
                                                   }
                                                   result = nil;
-                                                  
-                                                  
                                               }
-                                              
-                                              
-                                              
-                                              
-                                              
+
                                               return result;
-                                              
                                           }];
-    
 }
 
 -(void)setupMenuItems {
@@ -351,7 +350,11 @@
 }
 
 
-
+- (void)setColor:(NSColor *)color {
+    colorWell.color = color;
+    [self colorWellUpdated:nil];
+    self.swatchNeeded = YES;
+}
 
 -(IBAction)decrementBrightness:(id)sender {
     
@@ -418,7 +421,6 @@
     
     
     if ([colorData isKindOfClass:[NSData class]]) {
-        
         NSData *filthyHistory = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
         
         if ([filthyHistory isKindOfClass:[NSArray class]]) {
@@ -439,13 +441,8 @@
             self.colorHistory = historyArray;
             
             needsColorHistory = NO;
-            
         }
     }
-    
-    
-    
-    
     
     
     if (needsColorHistory) {
@@ -715,6 +712,19 @@
 }
 
 
+- (BOOL)colorIsGrayscale:(NSColor *)color {
+    int red = color.redComponent * 1000;
+    int green = color.greenComponent * 1000;
+    int blue = color.blueComponent * 1000;
+    
+    if (red == green && red == blue && green == blue && green == red) {
+        return YES;
+    }
+    
+    
+    return NO;
+}
+
 -(NSString *)codeStringForColor:(NSColor *)color {
     
     NSString *codeString;
@@ -722,11 +732,15 @@
 	switch (self.colorMode) {
 		case uicolor:
             
-            if (self.wantsHSB) {
+            if ([self colorIsGrayscale:color]) {
+                codeString = [NSString stringWithFormat:@"[UIColor colorWithWhite:%.3f alpha:1.0]", color.redComponent];
+            }
+            else if (self.wantsHSB) {
                 codeString = [NSString stringWithFormat:@"[UIColor colorWithHue:%.3f saturation:%.3f brightness:%.3f alpha:1.0]", color.hueComponent, color.saturationComponent, color.brightnessComponent];
 
                 
-            } else {
+            }
+            else {
                 codeString = [NSString stringWithFormat:@"[UIColor colorWithRed:%.3f green:%.3f blue:%.3f alpha:%.2f]", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];	    
                               
             }
@@ -1084,9 +1098,8 @@
 
 
 -(void)parseColorFromPasteboard:(id)sender {
-
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-    NSArray *classes = [[NSArray alloc] initWithObjects:[NSString class], nil];
+    NSArray *classes = [[[NSArray alloc] initWithObjects:[NSString class], nil] autorelease];
     NSDictionary *options = [NSDictionary dictionary];
     NSArray *copiedItems = [pasteboard readObjectsForClasses:classes options:options];
     if (copiedItems != nil) {
