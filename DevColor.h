@@ -32,7 +32,13 @@
 @class DCColor;
 
 typedef enum codeTypes {
-	uicolor, nscolor, hex, rgb, rgba
+	uicolor,
+    nscolor,
+    hex,
+    rgb,
+    rgba,
+    java,
+    cgcolor
 	
 } codeType;
 
@@ -81,6 +87,7 @@ typedef enum codeTypes {
 @property codeType colorMode;
 @property BOOL enjoysQuiet, swatchNeeded, wantsHSB, wantsSemiColon, wantsSet;
 
+- (IBAction)showPanel:(id)sender;
 
 /* Events */
 -(void)setupEvents;
@@ -121,6 +128,7 @@ typedef enum codeTypes {
 -(IBAction)parseColorFromPasteboard:(id)sender;
 -(IBAction)updateWithRandomColor:(id)sender;
 -(IBAction)updateColorFromSlider:(id)sender;
+-(IBAction)updateColorFromWell:(NSObject *)sender;
 
 /* You know, for kids */
 -(void)doWelcome;
@@ -143,7 +151,6 @@ typedef enum codeTypes {
 -(IBAction)decrementSaturation:(id)sender;
 -(IBAction)incrementBrightness:(id)sender;
 -(IBAction)decrementBrightness:(id)sender;
-
 
 /* Sliders */
 -(BOOL)sliderIsRGBSlider:(NSSlider *)theSlider;

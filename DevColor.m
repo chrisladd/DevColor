@@ -118,6 +118,10 @@
     
 }
 
+- (void)showPanel:(id)sender {
+    [panel makeKeyAndOrderFront:nil];
+}
+
 -(void)setupEvents {
 
 //    [NSEvent addGlobalMonitorForEventsMatchingMask:NSMouseMovedMask
@@ -131,7 +135,7 @@
 //    
     
     
-    
+
     // register for keydown notifications...
     [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask
                                           handler:^(NSEvent *incomingEvent) {
@@ -139,6 +143,11 @@
                                               NSEvent *result = incomingEvent;
                                               
                                               char aChar = [result.characters characterAtIndex:0];
+                                              
+                                              if (aChar == 's') {
+                                                  [self showPanel:nil];
+                                                  result = nil;
+                                              }
                                               
                                               if (aChar == 'c') {
                                                   [self copyCodeToClipboard:nil];
@@ -727,7 +736,7 @@
 
 -(NSString *)codeStringForColor:(NSColor *)color {
     
-    NSString *codeString;
+    NSString *codeString = @"";
 	
 	switch (self.colorMode) {
 		case uicolor:
@@ -785,7 +794,17 @@
         case rgb:
             codeString = [color rgbValue];
             break;
-            
+        case java:
+            if (self.wantsHSB) {
+                codeString = [color javaHSVValue];
+            }
+            else {
+                codeString = [color javaRGBValue];
+            }
+            break;
+        case cgcolor:
+            codeString = [color cgColorValue];
+            break;
 		default:
 			break;
 	}
@@ -817,6 +836,12 @@
 		case 4:
 			self.colorMode = rgb;
 			break;
+		case 5:
+			self.colorMode = java;
+			break;
+		case 6:
+			self.colorMode = cgcolor;
+			break;
 		default:
 			break;
 	}
@@ -825,6 +850,17 @@
     
 	[self colorWellUpdated:nil];
 
+}
+- (IBAction)updateColorFromWell:(NSObject *)sender {
+    if ([sender respondsToSelector:@selector(tag)]) {
+        int tag = (int)[sender performSelector:@selector(tag)];
+        tag /= 10;
+        NSView *possibleColorWell = [mainView viewWithTag:tag];
+        
+        if ([possibleColorWell isKindOfClass:[NSColorWell class]]) {
+            [self setColor:[(NSColorWell *)possibleColorWell color]];
+        }
+    }
 }
 
 -(IBAction)copyCodeToClipboard:(id)sender {
@@ -1011,6 +1047,9 @@
         int wellGrabberInt = HISTORY_WELL_BASE_TAG + i;
         
         NSColorWell *aWell = [mainView viewWithTag:wellGrabberInt];
+        
+        [aWell setTarget:self];
+        [aWell setAction:@selector(updateColorFromWell:)];
         
         if ([aWell isKindOfClass:[NSColorWell class]]) {
             

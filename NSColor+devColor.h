@@ -34,12 +34,15 @@
 
 
 @interface NSColor (NSColor_devColor)
--(NSString *)hexValue;
--(NSString *)rgbValue;
--(NSString *)rgbaValue;
--(NSArray *)shadeArray;
--(NSColor *)complement;
--(NSArray *)twinColorCousinsSeparatedByDegrees:(float)degrees initialOffset:(float)offsetDegrees;
+- (NSString *)hexValue;
+- (NSString *)cgColorValue;
+- (NSString *)javaHSVValue;
+- (NSString *)javaRGBValue;
+- (NSString *)rgbValue;
+- (NSString *)rgbaValue;
+- (NSArray *)shadeArray;
+- (NSColor *)complement;
+- (NSArray *)twinColorCousinsSeparatedByDegrees:(float)degrees initialOffset:(float)offsetDegrees;
 
 
 /* Color string identification */
@@ -91,18 +94,17 @@
     
 }
 
+- (int)twoFiftyFiveIntFromFloat:(CGFloat)colorFloat {
+    float adjFloat = colorFloat * 25500;
+    int adjInt = adjFloat / 100;
+    return adjInt;
+}
 
 -(NSString *)rgbValue {
-    
     //    rgba(255, 0, 0, 0.2)
-    
-	float redFloat = self.redComponent * 25500;
-	float greenFloat = self.greenComponent * 25500;
-	float blueFloat = self.blueComponent * 25500;
-    
-	int redInt = redFloat / 100;
-	int greenInt = greenFloat / 100;
-	int blueInt = blueFloat / 100;
+	int redInt = [self twoFiftyFiveIntFromFloat:self.redComponent];
+	int greenInt = [self twoFiftyFiveIntFromFloat:self.greenComponent];
+	int blueInt = [self twoFiftyFiveIntFromFloat:self.blueComponent];
     
     NSString *rgbString = [NSString stringWithFormat:@"rgb(%d, %d, %d)", redInt, greenInt, blueInt];
     
@@ -110,6 +112,30 @@
     
 }
 
+- (NSString *)cgColorValue {
+    // CGColorCreateGenericRGB(0.294, 0.549, 0.973, 1.000)
+    return [NSString stringWithFormat:@"CGColorCreateGenericRGB(%.3f, %.3f, %.3f, 1.000)",
+            self.redComponent,
+            self.greenComponent,
+            self.blueComponent];
+}
+
+- (NSString *)javaRGBValue {
+//    new Color(red, green, blue)
+    return [NSString stringWithFormat:@"new Color(%d, %d, %d)",
+            [self twoFiftyFiveIntFromFloat:self.redComponent],
+            [self twoFiftyFiveIntFromFloat:self.greenComponent],
+            [self twoFiftyFiveIntFromFloat:self.blueComponent]];
+
+}
+
+- (NSString *)javaHSVValue {
+//     Color.getHSBColor(hue, saturation, brightness)
+    return [NSString stringWithFormat:@"Color.getHSBColor(%.3ff, %.3ff, %.3ff)",
+            self.hueComponent,
+            self.saturationComponent,
+            self.brightnessComponent];
+}
 
 -(NSString *)hexValue {
 	
@@ -133,7 +159,7 @@
 	int blue2 = blueInt % 16;
 	
 	
-	NSString *hexString = [NSString stringWithFormat:@"%c%c%c%c%c%c", [hexKey characterAtIndex:red1], [hexKey characterAtIndex:red2], [hexKey characterAtIndex:green1], [hexKey characterAtIndex:green2], [hexKey characterAtIndex:blue1], [hexKey characterAtIndex:blue2]];
+	NSString *hexString = [NSString stringWithFormat:@"#%c%c%c%c%c%c", [hexKey characterAtIndex:red1], [hexKey characterAtIndex:red2], [hexKey characterAtIndex:green1], [hexKey characterAtIndex:green2], [hexKey characterAtIndex:blue1], [hexKey characterAtIndex:blue2]];
 	
 return hexString;
 }
@@ -488,12 +514,8 @@ return hexString;
                 
                 
             }        
-            
-            
-        }        
-        
+        }
     }
-    
     
     return YES;
     
@@ -516,13 +538,9 @@ return hexString;
                 return NO;
                 
                 
-            }        
-            
-            
-        }        
-        
+            }
+        }
     }
-    
     
     return YES;
 }
