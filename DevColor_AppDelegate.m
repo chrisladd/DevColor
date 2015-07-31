@@ -30,27 +30,6 @@
 #define YOUR_EXTERNAL_RECORD_EXTENSION @"devcolor"
 #define YOUR_STORE_TYPE NSXMLStoreType
 
-
-
-/* Note to anybody but Chris Ladd:
-    You'll notice that...
- 
-    - The project is set up for CoreData, but there is no implementation of CoreData. This is because:
-
-             * I originally anticipated adding more advanced features for saving lists of colors,e tc...
-
-             * I still haven't ruled out this possibility.
-
-             * CoreData is a pain in the ass to set up.
-
- 
- 
- 
- */
-
-
-
-
 @implementation DevColor_AppDelegate
 
 @synthesize window;

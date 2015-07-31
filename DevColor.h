@@ -47,8 +47,7 @@ typedef enum codeTypes {
 	codeType colorMode;
     
     IBOutlet NSPanel *panel;
-    
-    
+
     // color history
     int historyIndex;    
     NSArray *colorHistory;
@@ -76,6 +75,8 @@ typedef enum codeTypes {
     IBOutlet NSView *mainView;
     
     
+    NSMenuItem *objectiveCMenuItem;
+    NSMenuItem *swiftMenuItem;
 }
 
 /* Objects */
@@ -86,6 +87,10 @@ typedef enum codeTypes {
 @property int historyIndex;
 @property codeType colorMode;
 @property BOOL enjoysQuiet, swatchNeeded, wantsHSB, wantsSemiColon, wantsSet;
+
+@property (nonatomic) BOOL prefersSwift;
+@property (assign) IBOutlet NSMenuItem *objectiveCMenuItem;
+@property (assign) IBOutlet NSMenuItem *swiftMenuItem;
 
 - (IBAction)showPanel:(id)sender;
 

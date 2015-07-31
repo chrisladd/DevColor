@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F7446990DB6B7EA00F9684A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7446970DB6B7EA00F9684A /* MainMenu.xib */; };
-		770B37ED0679A11B001EADE2 /* DevColor_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 770B37EC0679A11B001EADE2 /* DevColor_DataModel.xcdatamodel */; };
 		77C8280E06725ACE000B614F /* DevColor_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* DevColor_AppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -21,7 +20,6 @@
 		8EA184B8134E1ADF00B659E3 /* bip3.aif in Resources */ = {isa = PBXBuildFile; fileRef = 8EA184B6134E1ADF00B659E3 /* bip3.aif */; };
 		8EA184B9134E1ADF00B659E3 /* bip2.aif in Resources */ = {isa = PBXBuildFile; fileRef = 8EA184B7134E1ADF00B659E3 /* bip2.aif */; };
 		8EA3FFDB12EF1A4000D392B0 /* DevColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA3FFDA12EF1A4000D392B0 /* DevColor.m */; };
-		8EC66BAA1655E33A00F77A78 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EC66BA91655E33A00F77A78 /* CoreFoundation.framework */; };
 		8EEAC3FF134D3FE20080A5BE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8EEAC3FE134D3FE20080A5BE /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +43,6 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2F7446980DB6B7EA00F9684A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DevColor_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevColor_Prefix.pch; sourceTree = "<group>"; };
-		770B37EC0679A11B001EADE2 /* DevColor_DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = DevColor_DataModel.xcdatamodel; sourceTree = "<group>"; };
 		77C82804067257F0000B614F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		77C8280B06725ACE000B614F /* DevColor_AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevColor_AppDelegate.h; sourceTree = "<group>"; };
 		77C8280C06725ACE000B614F /* DevColor_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevColor_AppDelegate.m; sourceTree = "<group>"; };
@@ -71,7 +68,6 @@
 		8EA3005012EF2C6500D392B0 /* NSColor+devColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+devColor.h"; sourceTree = "<group>"; };
 		8EA3FFD912EF1A4000D392B0 /* DevColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevColor.h; sourceTree = "<group>"; };
 		8EA3FFDA12EF1A4000D392B0 /* DevColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevColor.m; sourceTree = "<group>"; };
-		8EC66BA91655E33A00F77A78 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		8EEAC3FE134D3FE20080A5BE /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +76,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EC66BAA1655E33A00F77A78 /* CoreFoundation.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,8 +131,6 @@
 		29B97314FDCFA39411CA2CEA /* DevColor */ = {
 			isa = PBXGroup;
 			children = (
-				8EC66BA91655E33A00F77A78 /* CoreFoundation.framework */,
-				7756732906782D8800D1FEB8 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -183,14 +176,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7756732906782D8800D1FEB8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				770B37EC0679A11B001EADE2 /* DevColor_DataModel.xcdatamodel */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		797A783E0DDCFB3E0050D0C2 /* Importer */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +214,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 26FC0A880875C7B200E6366F /* Build configuration list for PBXProject "DevColor" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -273,7 +260,6 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				77C8280E06725ACE000B614F /* DevColor_AppDelegate.m in Sources */,
-				770B37ED0679A11B001EADE2 /* DevColor_DataModel.xcdatamodel in Sources */,
 				8EA3FFDB12EF1A4000D392B0 /* DevColor.m in Sources */,
 				8EA184B2134DF75600B659E3 /* DCColor.m in Sources */,
 				8EA184B5134E057500B659E3 /* DCClickableImageView.m in Sources */,

@@ -30,7 +30,11 @@
 #import "NSColor+devColor.h"
 #import "DCColor.h"
 
+NSString * const DevColorPrefersSwiftDefaultsKey = @"prefersSwift";
+
 @implementation DevColor
+@synthesize objectiveCMenuItem;
+@synthesize swiftMenuItem;
 @synthesize colorMode, colorHistory, historyIndex, enjoysQuiet, fxArray, swatchNeeded, wantsSemiColon, wantsHSB, wantsSet;
 
 #define MAIN_SHADES_BASE_TAG 400
@@ -210,8 +214,31 @@
                                           }];
 }
 
--(void)setupMenuItems {
-    
+- (IBAction)enableObjectiveC:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DevColorPrefersSwiftDefaultsKey];
+    [self syncLanguageMenu];
+}
+
+- (IBAction)enableSwift:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DevColorPrefersSwiftDefaultsKey];
+    [self syncLanguageMenu];
+}
+
+- (void)syncLanguageMenu {
+    self.prefersSwift = [[NSUserDefaults standardUserDefaults] boolForKey:DevColorPrefersSwiftDefaultsKey];
+    if (self.prefersSwift) {
+        self.swiftMenuItem.state = NSOnState;
+        self.objectiveCMenuItem.state = NSOffState;
+    }
+    else {
+        self.swiftMenuItem.state = NSOffState;
+        self.objectiveCMenuItem.state = NSOnState;
+    }
+}
+
+- (void)setupMenuItems {
+    [self syncLanguageMenu];
+
     self.enjoysQuiet = [[NSUserDefaults standardUserDefaults] boolForKey:@"enjoysQuiet"];
     
     if (self.enjoysQuiet) {
@@ -238,7 +265,7 @@
     } else {
         addSemiColonMenuItem.state = NSOffState;
     }
-    
+
     
     
     self.wantsSet = [[NSUserDefaults standardUserDefaults] boolForKey:@"wantsSet"];
@@ -248,10 +275,6 @@
     } else {
         addSetMenuItem.state = NSOffState;
     }
-
-
-    
-    
 }
 
 
@@ -735,29 +758,39 @@
 }
 
 -(NSString *)codeStringForColor:(NSColor *)color {
-    
     NSString *codeString = @"";
 	
 	switch (self.colorMode) {
 		case uicolor:
-            
             if ([self colorIsGrayscale:color]) {
-                codeString = [NSString stringWithFormat:@"[UIColor colorWithWhite:%.3f alpha:1.0]", color.redComponent];
+                if (self.prefersSwift) {
+                    codeString = [NSString stringWithFormat:@"UIColor(white: %.3f, alpha: 1.0)", color.redComponent];
+                }
+                else {
+                    codeString = [NSString stringWithFormat:@"[UIColor colorWithWhite:%.3f alpha:1.0]", color.redComponent];
+                }
             }
             else if (self.wantsHSB) {
-                codeString = [NSString stringWithFormat:@"[UIColor colorWithHue:%.3f saturation:%.3f brightness:%.3f alpha:1.0]", color.hueComponent, color.saturationComponent, color.brightnessComponent];
-
-                
+                if (self.prefersSwift) {
+                    codeString = [NSString stringWithFormat:@"UIColor(hue: %.3f, saturation: %.3f, brightness: %.3f, alpha: 1.0)", color.hueComponent, color.saturationComponent, color.brightnessComponent];
+                }
+                else {
+                    codeString = [NSString stringWithFormat:@"[UIColor colorWithHue:%.3f saturation:%.3f brightness:%.3f alpha:1.0]", color.hueComponent, color.saturationComponent, color.brightnessComponent];
+                }
             }
             else {
-                codeString = [NSString stringWithFormat:@"[UIColor colorWithRed:%.3f green:%.3f blue:%.3f alpha:%.2f]", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];	    
-                              
+                if (self.prefersSwift) {
+                    codeString = [NSString stringWithFormat:@"UIColor(red: %.3f, green: %.3f, blue: %.3f, alpha: %.3f)", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];
+
+                }
+                else {
+                    codeString = [NSString stringWithFormat:@"[UIColor colorWithRed:%.3f green:%.3f blue:%.3f alpha:%.2f]", color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent];
+                }
             }
             
-
-            if (self.wantsSet) { // [[...] set];
+            if (!self.prefersSwift && self.wantsSet) { // [[...] set];
                 codeString = [NSString stringWithFormat:@"[%@ set];", codeString];
-            } else if (self.wantsSemiColon) {
+            } else if (!self.prefersSwift && self.wantsSemiColon) {
                 codeString = [NSString stringWithFormat:@"%@;", codeString];
                 
             }
